@@ -1,16 +1,7 @@
-import { StatusBar } from "expo-status-bar"
 import { useState } from "react"
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-} from "react-native"
-import IntoroTextInput from "../components/common/IntoroTextInput"
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import GoogleLoginButton from "../components/common/GoogleLoginButton"
-// import { Text } from "react-native-paper"
+import IntoroTextInput from "../components/common/IntoroTextInput"
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("")

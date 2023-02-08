@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, TextInput } from "react-native"
 import React from "react"
+import { StyleSheet, TextInput } from "react-native"
 
 const IntoroTextInput = ({ placeholder, ...props }) => {
   return (

@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native"
 import React from "react"
+import { Image, StyleSheet, Text, TouchableOpacity } from "react-native"
 import googleIcon from "../../assets/icon/google-icon.png"
 
 const GoogleLoginButton = ({ text }) => {
