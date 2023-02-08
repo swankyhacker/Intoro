@@ -6,8 +6,10 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Image,
 } from "react-native"
 import IntoroTextInput from "../components/common/IntoroTextInput"
+import GoogleLoginButton from "../components/common/GoogleLoginButton"
 // import { Text } from "react-native-paper"
 
 const Login = ({ navigation }) => {
@@ -29,6 +31,7 @@ const Login = ({ navigation }) => {
         </Text>
       </View>
 
+      {/* Email and Password Input Field */}
       <View style={styles.inputContainer}>
         <IntoroTextInput
           placeholder="Email"
@@ -43,25 +46,31 @@ const Login = ({ navigation }) => {
         />
       </View>
 
+      {/* Sign In Button */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={handleLogin} style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
       </View>
 
       <Text style={{ fontSize: 16, fontWeight: "bold", padding: 10 }}>or</Text>
 
-      {/* TODO: Add sign in with google button */}
+      <View style={styles.googleButtonContainer}>
+        <GoogleLoginButton text={"Sign in with Google"} />
+      </View>
 
-      <Text style={{ fontSize: 14, padding: 10 }}>
-        Dont have an account?{" "}
-        <Text
-          onPress={() => navigation.navigate("Register")}
-          style={{ fontWeight: "bold" }}
-        >
-          Register Now
+      {/* Google Login Button */}
+      <View style={styles.footerContainer}>
+        <Text style={{ fontSize: 14, padding: 10 }}>
+          Dont have an account?{" "}
+          <Text
+            onPress={() => navigation.navigate("Register")}
+            style={{ fontWeight: "bold" }}
+          >
+            Register Now
+          </Text>
         </Text>
-      </Text>
+      </View>
     </View>
   )
 }
@@ -81,7 +90,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     marginBottom: 20,
-    fontSize: 28,
+    fontSize: 34,
   },
   subtitle: {
     marginBottom: 20,
@@ -90,19 +99,12 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: "80%",
   },
-  input: {
-    backgroundColor: "white",
-    paddingHorizontal: 15,
-    paddingVertical: 12,
-    borderRadius: 5,
-    marginBottom: 10,
-    borderWidth: 0.5,
-  },
   buttonContainer: {
-    width: "80%%",
+    width: "80%",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
+    marginBottom: 6,
   },
   button: {
     backgroundColor: "#D4AD65",
@@ -115,6 +117,15 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "700",
     fontSize: 16,
+  },
+  googleButtonContainer: {
+    width: "70%",
+    marginTop: 6,
+  },
+  footerContainer: {
+    marginTop: 10,
+    alignItems: "center",
+    width: "80%",
   },
 })
 

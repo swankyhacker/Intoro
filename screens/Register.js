@@ -2,6 +2,7 @@ import { useState } from "react"
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native"
 import React from "react"
 import IntoroTextInput from "../components/common/IntoroTextInput"
+import GoogleLoginButton from "../components/common/GoogleLoginButton"
 
 const Register = ({ navigation }) => {
   const [email, setEmail] = useState("")
@@ -48,7 +49,9 @@ const Register = ({ navigation }) => {
 
       <Text style={{ fontSize: 16, fontWeight: "bold", padding: 10 }}>or</Text>
 
-      {/* TODO: Add sign in with google button */}
+      <View style={styles.googleButtonContainer}>
+        <GoogleLoginButton text={"Sign up with Google"} />
+      </View>
 
       <View style={styles.footerContainer}>
         <Text style={{ fontSize: 14, padding: 10 }}>
@@ -82,7 +85,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     marginBottom: 20,
-    fontSize: 28,
+    fontSize: 34,
   },
   subtitle: {
     marginBottom: 20,
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   buttonContainer: {
-    width: "80%%",
+    width: "80%",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
@@ -109,7 +112,11 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
   },
+  googleButtonContainer: {
+    width: "70%",
+  },
   footerContainer: {
+    marginTop: 10,
     alignItems: "center",
     width: "80%",
   },
