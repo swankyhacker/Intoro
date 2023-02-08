@@ -1,8 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app"
-import { FIREBASE_API_KEY } from "@env"
+import { FIREBASE_API_KEY, APP_ENV } from "@env"
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore"
+import { getFunctions, connectFunctionsEmulator } from "firebase/functions"
+import { getAuth, connectAuthEmulator } from "firebase/auth"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,3 +21,18 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
+// Initialize Cloud Firestore
+const db = getFirestore(app)
+// Initialize Cloud Functions
+const functions = getFunctions(app)
+// Initialize Firebase Auth
+const auth = getAuth(app)
+
+// For development environments, use emulators
+if (APP_ENV === "development") {
+  connectFirestoreEmulator(db, "localhost", 8080)
+  connectFunctionsEmulator(functions, "localhost", 5001)
+  connectAuthEmulator(auth, "localhost", 9099)
+}
+
+export { db, functions, auth }
