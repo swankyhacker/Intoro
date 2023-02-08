@@ -8,7 +8,6 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState("")
 
   const handleSignUp = () => {}
-
   const handleLogin = () => {}
 
   return (
