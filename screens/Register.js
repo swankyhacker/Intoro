@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     width: "80%",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 10,
   },
   button: {
     backgroundColor: "#D4AD65",
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     width: "70%",
   },
   footerContainer: {
-    marginTop: 10,
+    marginTop: 2,
     alignItems: "center",
     width: "80%",
   },
