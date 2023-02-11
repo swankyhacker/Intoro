@@ -1,15 +1,40 @@
-import { useState } from "react"
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native"
-import React from "react"
-import IntoroTextInput from "../components/common/IntoroTextInput"
-import GoogleLoginButton from "../components/common/GoogleLoginButton"
+import { useRef, useState } from "react"
+import { StyleSheet, Text, View } from "react-native"
+
+import { AuthButton, ErrorSnackbar } from "@components/auth"
+import GoogleLoginButton from "@components/common/GoogleLoginButton"
+import IntoroTextInput from "@components/common/IntoroTextInput"
+
+import { createUserWithEmail } from "api/auth"
 
 const Register = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
+  const [snackBar, setSnackBar] = useState(false)
+  const errorMessage = useRef("")
 
-  const handleRegister = () => {}
+  const handleRegister = async () => {
+    try {
+      const user = await createUserWithEmail(email, password)
+      console.log("User", user)
+    } catch (error) {
+      console.log("Error", error.message)
+      errorMessage.current = error.message
+      setSnackBar(true)
+    }
+  }
+
+  const checkPasswords = () => {
+    if (password === confirmPassword) {
+      handleRegister()
+    } else {
+      console.log("Passwords mismatch")
+      errorMessage.current = "Passwords mismatch"
+      setSnackBar(true)
+    }
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -20,7 +45,6 @@ const Register = ({ navigation }) => {
           enjoyable experience!
         </Text>
       </View>
-
       <View style={styles.inputContainer}>
         <IntoroTextInput
           placeholder="Email"
@@ -40,19 +64,9 @@ const Register = ({ navigation }) => {
           secureTextEntry
         />
       </View>
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleRegister} style={styles.button}>
-          <Text style={styles.buttonText}>Register</Text>
-        </TouchableOpacity>
-      </View>
-
+      <AuthButton label={"Register"} onPress={checkPasswords} />
       <Text style={{ fontSize: 16, fontWeight: "bold", padding: 10 }}>or</Text>
-
-      <View style={styles.googleButtonContainer}>
-        <GoogleLoginButton text={"Sign up with Google"} />
-      </View>
-
+      <GoogleLoginButton text={"Sign up with Google"} />
       <View style={styles.footerContainer}>
         <Text style={{ fontSize: 14, padding: 10 }}>
           Already have an account?{" "}
@@ -64,6 +78,11 @@ const Register = ({ navigation }) => {
           </Text>
         </Text>
       </View>
+      <ErrorSnackbar
+        visible={snackBar}
+        onDismiss={() => setSnackBar(false)}
+        message={errorMessage.current}
+      />
     </View>
   )
 }
@@ -93,27 +112,6 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "80%",
-  },
-  buttonContainer: {
-    width: "80%",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 10,
-  },
-  button: {
-    backgroundColor: "#D4AD65",
-    width: "100%",
-    padding: 15,
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "700",
-    fontSize: 16,
-  },
-  googleButtonContainer: {
-    width: "70%",
   },
   footerContainer: {
     marginTop: 2,

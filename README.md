@@ -37,6 +37,7 @@ This project has already been configured with the following dependencies:
 - ```react-navigation```: For navigating between different screens and storing the browsed pages in a stack.
 - ```firebase-tools```: Accessing Firebase tools from the CLI.
 - ```husky```: Pre-commit Git hooks for consistent linting and formatting.
+- ```metro-react-native-babel-preset```: Set up path resolvers in project
 
 ## Commit Rules 
 ---

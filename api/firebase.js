@@ -32,7 +32,7 @@ const auth = getAuth(app)
 if (APP_ENV === "development") {
   connectFirestoreEmulator(db, "localhost", 8080)
   connectFunctionsEmulator(functions, "localhost", 5001)
-  connectAuthEmulator(auth, "localhost", 9099)
+  connectAuthEmulator(auth, "http://10.0.2.2:9099")
 }
 
-export { db, functions, auth }
+export { auth, db, functions }
