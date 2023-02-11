@@ -1,14 +1,27 @@
-import { useState } from "react"
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import GoogleLoginButton from "../components/common/GoogleLoginButton"
-import IntoroTextInput from "../components/common/IntoroTextInput"
+import { useRef, useState } from "react"
+import { StyleSheet, Text, View } from "react-native"
+
+import { AuthButton, ErrorSnackbar } from "@components/auth"
+import { GoogleLoginButton, IntoroTextInput } from "@components/common"
+
+import { signInWithEmail } from "@api/auth"
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [snackBar, setSnackBar] = useState(false)
+  const errorMessage = useRef("")
 
-  const handleSignUp = () => {}
-  const handleLogin = () => {}
+  const handleLogin = async (email, password) => {
+    try {
+      const user = await signInWithEmail(email, password)
+      console.log("User", user)
+    } catch (error) {
+      console.log("Error", error.message)
+      errorMessage.current = error.message
+      setSnackBar(true)
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -26,7 +39,10 @@ const Login = ({ navigation }) => {
         <IntoroTextInput
           placeholder="Email"
           value={email}
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={(text) => {
+            setEmail(text)
+            console.log(text)
+          }}
         />
         <IntoroTextInput
           placeholder="Password"
@@ -37,17 +53,14 @@ const Login = ({ navigation }) => {
       </View>
 
       {/* Sign In Button */}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
-          <Text style={styles.buttonText}>Sign In</Text>
-        </TouchableOpacity>
-      </View>
+      <AuthButton
+        label={"Sign in"}
+        onPress={() => handleLogin(email, password)}
+      />
 
       <Text style={{ fontSize: 16, fontWeight: "bold", padding: 10 }}>or</Text>
 
-      <View style={styles.googleButtonContainer}>
-        <GoogleLoginButton text={"Sign in with Google"} />
-      </View>
+      <GoogleLoginButton text={"Sign in with Google"} />
 
       {/* Google Login Button */}
       <View style={styles.footerContainer}>
@@ -61,6 +74,11 @@ const Login = ({ navigation }) => {
           </Text>
         </Text>
       </View>
+      <ErrorSnackbar
+        visible={snackBar}
+        onDismiss={() => setSnackBar(false)}
+        message={errorMessage.current}
+      />
     </View>
   )
 }
@@ -88,29 +106,6 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "80%",
-  },
-  buttonContainer: {
-    width: "80%",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 20,
-    marginBottom: 6,
-  },
-  button: {
-    backgroundColor: "#D4AD65",
-    width: "100%",
-    padding: 15,
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "700",
-    fontSize: 16,
-  },
-  googleButtonContainer: {
-    width: "70%",
-    marginTop: 6,
   },
   footerContainer: {
     marginTop: 10,

@@ -1,22 +1,28 @@
 import React from "react"
-import { Image, StyleSheet, Text, TouchableOpacity } from "react-native"
-import googleIcon from "../../assets/icon/google-icon.png"
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import googleIcon from "@assets/icon/google-icon.png"
 
-const GoogleLoginButton = ({ text }) => {
+const GoogleLoginButton = ({ text, onPress }) => {
   return (
-    <TouchableOpacity style={styles.googleButton}>
-      <Image
-        style={{ width: 30, height: 30, marginHorizontal: 10 }}
-        source={googleIcon}
-      />
-      <Text style={styles.googleButtonText}>{text}</Text>
-    </TouchableOpacity>
+    <View style={styles.googleButtonContainer}>
+      <TouchableOpacity onPress={onPress} style={styles.googleButton}>
+        <Image
+          style={{ width: 30, height: 30, marginHorizontal: 10 }}
+          source={googleIcon}
+        />
+        <Text style={styles.googleButtonText}>{text}</Text>
+      </TouchableOpacity>
+    </View>
   )
 }
 
 export default GoogleLoginButton
 
 const styles = StyleSheet.create({
+  googleButtonContainer: {
+    width: "70%",
+    marginTop: 6,
+  },
   googleButton: {
     flexDirection: "row",
     backgroundColor: "#F9F9F9",
