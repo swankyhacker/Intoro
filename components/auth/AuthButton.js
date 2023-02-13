@@ -5,9 +5,9 @@ import { ActivityIndicator } from "react-native-paper"
 const AuthButton = ({ onPress, label }) => {
   const [loading, setLoading] = useState(false)
 
-  const handleButton = () => {
+  const handleButton = async () => {
     setLoading(true)
-    onPress()
+    await onPress()
     setLoading(false)
   }
 

@@ -1,12 +1,12 @@
 import { useRef, useState } from "react"
 import { StyleSheet, Text, View } from "react-native"
 
-import { AuthButton, ErrorSnackbar } from "@components/auth"
+import { AuthButton, AuthFooter, ErrorSnackbar } from "@components/auth"
 import { GoogleLoginButton, IntoroTextInput } from "@components/common"
 
-import { signInWithEmail } from "@api/auth"
+import { signInWithEmail, signInWithGoogle } from "@api/auth"
 
-const Login = ({ navigation }) => {
+const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [snackBar, setSnackBar] = useState(false)
@@ -33,16 +33,12 @@ const Login = ({ navigation }) => {
           Let's sign you in
         </Text>
       </View>
-
       {/* Email and Password Input Field */}
       <View style={styles.inputContainer}>
         <IntoroTextInput
           placeholder="Email"
           value={email}
-          onChangeText={(text) => {
-            setEmail(text)
-            console.log(text)
-          }}
+          onChangeText={(text) => setEmail(text)}
         />
         <IntoroTextInput
           placeholder="Password"
@@ -51,29 +47,22 @@ const Login = ({ navigation }) => {
           secureTextEntry
         />
       </View>
-
       {/* Sign In Button */}
       <AuthButton
         label={"Sign in"}
         onPress={() => handleLogin(email, password)}
       />
-
       <Text style={{ fontSize: 16, fontWeight: "bold", padding: 10 }}>or</Text>
-
-      <GoogleLoginButton text={"Sign in with Google"} />
-
       {/* Google Login Button */}
-      <View style={styles.footerContainer}>
-        <Text style={{ fontSize: 14, padding: 10 }}>
-          Dont have an account?{" "}
-          <Text
-            onPress={() => navigation.navigate("Register")}
-            style={{ fontWeight: "bold" }}
-          >
-            Register Now
-          </Text>
-        </Text>
-      </View>
+      <GoogleLoginButton
+        text={"Sign in with Google"}
+        onPress={signInWithGoogle}
+      />
+      <AuthFooter
+        message={"Don't have an account? "}
+        navMessage={"Register Now"}
+        nextPage={"Register"}
+      />
       <ErrorSnackbar
         visible={snackBar}
         onDismiss={() => setSnackBar(false)}
@@ -105,11 +94,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   inputContainer: {
-    width: "80%",
-  },
-  footerContainer: {
-    marginTop: 10,
-    alignItems: "center",
     width: "80%",
   },
 })
