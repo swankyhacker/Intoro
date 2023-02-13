@@ -1,13 +1,13 @@
 import { useRef, useState } from "react"
 import { StyleSheet, Text, View } from "react-native"
 
-import { AuthButton, ErrorSnackbar } from "@components/auth"
+import { AuthButton, AuthFooter, ErrorSnackbar } from "@components/auth"
 import GoogleLoginButton from "@components/common/GoogleLoginButton"
 import IntoroTextInput from "@components/common/IntoroTextInput"
 
 import { createUserWithEmail } from "api/auth"
 
-const Register = ({ navigation }) => {
+const Register = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -67,17 +67,11 @@ const Register = ({ navigation }) => {
       <AuthButton label={"Register"} onPress={checkPasswords} />
       <Text style={{ fontSize: 16, fontWeight: "bold", padding: 10 }}>or</Text>
       <GoogleLoginButton text={"Sign up with Google"} />
-      <View style={styles.footerContainer}>
-        <Text style={{ fontSize: 14, padding: 10 }}>
-          Already have an account?{" "}
-          <Text
-            onPress={() => navigation.navigate("Login")}
-            style={{ fontWeight: "bold" }}
-          >
-            Login
-          </Text>
-        </Text>
-      </View>
+      <AuthFooter
+        message={"Already have an account? "}
+        navMessage={"Login"}
+        nextPage={"Login"}
+      />
       <ErrorSnackbar
         visible={snackBar}
         onDismiss={() => setSnackBar(false)}
@@ -111,11 +105,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   inputContainer: {
-    width: "80%",
-  },
-  footerContainer: {
-    marginTop: 2,
-    alignItems: "center",
     width: "80%",
   },
 })
