@@ -1,15 +1,38 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native"
-import React from "react"
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
-const IntoroButton = ({ navigation, text, ...props }) => {
-  const { style, ...rest } = props
+const IntoroButton = ({
+  text,
+  logoURI = undefined,
+  fontStyle = undefined,
+  buttonStyle = undefined,
+  onPress,
+  ...props
+}) => {
+  const { style } = props
+
+  console.log(logoURI)
+
+  if (logoURI !== undefined) {
+    return (
+      <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
+        <View
+          style={{
+            width: "70%",
+            flexDirection: "row",
+          }}
+        >
+          <Text style={[styles.buttonText, fontStyle, { marginRight: 15 }]}>
+            {text}
+          </Text>
+          <Image source={{ uri: logoURI }} style={{ width: 20 }} />
+        </View>
+      </TouchableOpacity>
+    )
+  }
+
   return (
-    <TouchableOpacity
-      style={[styles.button, style]}
-      onPress={() => navigation.navigate("Login")}
-      {...rest}
-    >
-      <Text style={styles.buttonText}>{text}</Text>
+    <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
+      <Text style={[styles.buttonText, fontStyle]}>{text}</Text>
     </TouchableOpacity>
   )
 }

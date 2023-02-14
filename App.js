@@ -5,13 +5,14 @@ import { StyleSheet } from "react-native"
 import Login from "@screens/Login"
 import Register from "@screens/Register"
 import Onboarding from "@screens/Onboarding"
+import CharacterChart from "@screens/CharacterChart"
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Onboarding">
+      <Stack.Navigator initialRouteName="CharacterChart">
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
@@ -25,6 +26,11 @@ export default function App() {
         <Stack.Screen
           name="Register"
           component={Register}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CharacterChart"
+          component={CharacterChart}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
