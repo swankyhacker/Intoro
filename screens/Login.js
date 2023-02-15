@@ -1,10 +1,14 @@
 import { useRef, useState } from "react"
-import { StyleSheet, Text, View } from "react-native"
+import { StyleSheet, Text, View, Dimensions, Image } from "react-native"
 
 import { AuthButton, AuthFooter, ErrorSnackbar } from "@components/auth"
 import { GoogleLoginButton, IntoroTextInput } from "@components/common"
 
 import { signInWithEmail, signInWithGoogle } from "@api/auth"
+
+import intoroLogo from "@assets/logo/IntoroLogo.png"
+
+const { width } = Dimensions.get("screen")
 
 const Login = () => {
   const [email, setEmail] = useState("")
@@ -25,6 +29,18 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
+      <View
+        style={{
+          position: "absolute",
+          top: 50,
+          paddingLeft: 20,
+          justifyContent: "flex-start",
+          width,
+        }}
+      >
+        <Image source={intoroLogo} />
+      </View>
+
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Welcome Back!</Text>
         <Text style={styles.subtitle}>
@@ -83,6 +99,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     width: "80%",
     marginBottom: 30,
+    marginTop: 40,
   },
   title: {
     fontWeight: "bold",

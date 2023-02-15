@@ -1,11 +1,15 @@
 import { useRef, useState } from "react"
-import { StyleSheet, Text, View } from "react-native"
+import { StyleSheet, Text, View, Dimensions, Image } from "react-native"
 
 import { AuthButton, AuthFooter, ErrorSnackbar } from "@components/auth"
 import GoogleLoginButton from "@components/common/GoogleLoginButton"
 import IntoroTextInput from "@components/common/IntoroTextInput"
 
 import { createUserWithEmail } from "api/auth"
+
+import intoroLogo from "@assets/logo/IntoroLogo.png"
+
+const { width } = Dimensions.get("screen")
 
 const Register = () => {
   const [email, setEmail] = useState("")
@@ -37,6 +41,18 @@ const Register = () => {
 
   return (
     <View style={styles.container}>
+      <View
+        style={{
+          position: "absolute",
+          top: 50,
+          paddingLeft: 20,
+          justifyContent: "flex-start",
+          width,
+        }}
+      >
+        <Image source={intoroLogo} />
+      </View>
+
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Let's Register!</Text>
         <Text style={styles.subtitle}>
@@ -93,6 +109,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     width: "80%",
+    marginTop: 50,
     marginBottom: 10,
   },
   title: {
@@ -105,6 +122,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   inputContainer: {
+    width: "80%",
+    marginBottom: 20,
+  },
+  footerContainer: {
+    marginTop: 10,
+    alignItems: "center",
     width: "80%",
   },
 })
