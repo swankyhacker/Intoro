@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View, Dimensions, Animated } from "react-native"
-import React from "react"
-const { width, height } = Dimensions.get("screen")
+import { Animated, Dimensions, StyleSheet, View } from "react-native"
+const { width } = Dimensions.get("screen")
 
 const Indicator = ({ scrollX }) => {
   return (
@@ -28,11 +27,8 @@ const Indicator = ({ scrollX }) => {
             <Animated.View
               key={`indicator-${i}`}
               style={{
-                height: 8,
-                width: 8,
-                borderRadius: 5,
+                ...styles.indicator,
                 backgroundColor,
-                margin: 10,
                 opacity,
                 transform: [
                   {
@@ -49,4 +45,11 @@ const Indicator = ({ scrollX }) => {
 
 export default Indicator
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  indicator: {
+    height: 8,
+    width: 8,
+    borderRadius: 5,
+    margin: 10,
+  },
+})
