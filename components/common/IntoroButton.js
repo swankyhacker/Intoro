@@ -18,7 +18,7 @@ export default IntoroButton
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "rgba(244,210,60,1)",
+    backgroundColor: "#f4d23c",
     width: "100%",
     padding: 15,
     borderRadius: 10,
