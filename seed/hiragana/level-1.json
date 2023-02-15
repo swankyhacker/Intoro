@@ -1,0 +1,91 @@
+[
+  {
+    "serial": 1,
+    "level": 1,
+    "character": "あ",
+    "reading": "a",
+    "mnemonic": "To remember this kana, find the capital *KH* A */KH* inside of it. This A will tell you that this kana is also \"a\" aka あ. There is another similar kana, お, but that one doesn't have an \"A\" in it, which is how you can differentiate them.",
+    "extra_note": "*KH* あ */KH* is pronounced like *UN* \"ah!\" */UN* like when you come to a realization. It also sounds like the *UN* a *UN* in \"c*UN*a*/UN*r\"."
+  },
+
+  {
+    "serial": 2,
+    "level": 1,
+    "character": "い",
+    "reading": "i",
+    "mnemonic": "To remember this kana, just think of a couple of *KH**UN*ee*/UN*ls*/KH* hanging out. They're upright because they're trying to mimic the letter *UN* \"i\" */UN*  which also stands upright and also happens to be the way you spell out this character in romaji1.",
+    "extra_note": "*KH* い */KH* is pronounced like the *UN*ee*/UN* in \"*UN*ee*/UN*l\"."
+  },
+
+  {
+    "serial": 3,
+    "level": 1,
+    "character": "う",
+    "reading": "u",
+    "mnemonic": "To remember this kana, notice the *KH* U */KH* shape right in it! It's sideways but it's there, telling you what this kana is. Be careful, there's another similar hiragana, つ, but that one isn't wearing a hat like *KH* U */KH* (you) are. Ooh, ahh, what a nifty hat!",
+    "extra_note": "*KH* う */KH* is pronounced like  the *UN*oo*/UN* in \"*UN*oo*/UN*h… ahhh!\" when you're watching fireworks. In other words, it sounds like *UN*u*/UN* in \"*UN*U*/UN*NO,\" the card game, or the number one in Spanish."
+  },
+
+  {
+    "serial": 4,
+    "level": 1,
+    "character": "え",
+    "reading": "e",
+    "mnemonic": "To remember this kana, think of it like an *KH**UN*e*/UN*xotic*/KH* bird. The feathery thing on its head gives it away that it's exotic and not normal. It also lays *KH**UN*e*/UN*xotic *UN*e*/UN*ggs */KH*, because it's an exotic bird, after all.",
+    "extra_note": "*KH* え */KH* is pronounced like the *UN*e*/UN* in \"*UN*e*/UN*gg\"."
+  },
+
+  {
+    "serial": 5,
+    "level": 1,
+    "character": "お",
+    "reading": "o",
+    "mnemonic": "Can you see the letter *KH* o */KH* in here, two times? This one looks similar to あ, except for its one key difference: there are two letter \"o\" symbols visible in there. Make sure you use this to differentiate this kana (お) and that similar kana (あ). This is one area of hiragana where a lot of people trip up, but by using this mnemonic you will be able to figure them out every time.",
+    "extra_note": "*KH* お */KH* is pronounced like you're saying \"*UN*oh*/UN*.\" It also sounds like the *UN*o*/UN* in \"*UN*o*/UN*rigami\" ."
+  },
+
+  {
+    "serial": 6,
+    "level": 1,
+    "character": "か",
+    "reading": "ka",
+    "mnemonic": "See how this kana looks like a *KH* mosquito */KH*? What a convenient coincidence. Mosquitos happen to be called *KH* か (*UN*ka*/UN*) */KH* in Japanese. You also say \"*KH**UN*cu*/UN*t*/KH* it out, darn mosquito!\" when they try to suck your blood, so that should be easy to remember.",
+    "extra_note": "*KH* か */KH*  is just the K sound plus あ, making a *KH* ka */KH*  sound. It's pronounced like *UN*ka*/UN* in \"*UN*ka*/UN*rma\"."
+  },
+
+  {
+    "serial": 7,
+    "level": 1,
+    "character": "き",
+    "reading": "ki",
+    "mnemonic": "To remember this , notice how much it resembles a *KH**UN*key*/UN**/KH*. Note: In some fonts, the bottom part is detached from the main part. For example: *KH* き */KH. The pronunciation is still \"ki\" though!",
+    "extra_note": "*KH* き */KH*  is just the K sound plus い, making a *KH* ki */KH* sound. In fact, it sounds just like the word \"*UN*key*/UN*\" which is the mnemonic we end up using."
+  },
+
+  {
+    "serial": 8,
+    "level": 1,
+    "character": "く",
+    "reading": "ku",
+    "mnemonic": "To remember this think of this kana being the mouth of a *KH* *UN*coo*/UN*-coo / *UN*cu*/UN*ckoo */KH*  bird popping out saying \"ku ku, ku ku!\"",
+    "extra_note": "*KH* く */KH* is just the K sound plus う, making a *KH* ku */KH*  sound. It's pronounced \"coo,\" like both syllables of the word \"*UN*cu*/UN*ckoo\" (or just the first syllable, depending on your variety of English)."
+  },
+
+  {
+    "serial": 9,
+    "level": 1,
+    "character": "け",
+    "reading": "ke",
+    "mnemonic": "See how this kana resembles some wiggly *KH* *UN*ke*/UN*lp */KH*?",
+    "extra_note": "*KH* け */KH* is just the K sound plus え, making a *KH* ke */KH* sound. It's pronounced like *UN*ke*/UN* in \"*UN*ke*/UN*lp.\""
+  },
+
+  {
+    "serial": 10,
+    "level": 1,
+    "character": "こ",
+    "reading": "ko",
+    "mnemonic": "こ is a couple of *KH**UN*co*/UN*habitation */KH* worms. They're so happy together, co-habitating the same area! Alternatively, you could imagine a couple of short *KH**UN*co*/UN*rds*/KH* laying on the ground next to each other.",
+    "extra_note": "*KH* こ */KH* is just the K sound plus お, making a *KH* ko */KH* sound. It's pronounced like *UN*co*/UN* in \"*UN*co*/UN*habitating.\" In British English, it is more like *UN*co*/UN* in \"*UN*co*/UN*in.\""
+  }
+]

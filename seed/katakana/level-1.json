@@ -1,0 +1,79 @@
+[
+  {
+    "serial": 1,
+    "level": 1,
+    "character": "ア",
+    "reading": "a",
+    "mnemonic": "*KK* ア */KK* has a deformed capital letter *KK*A*KK* in it. You have to turn your head to the side and connect some lines, but it's there.",
+    "extra_note": "*KH* あ */KH* is pronounced like *UN* \"ah!\" */UN* like when you come to a realization. It also sounds like the *UN* a *UN* in \"c*UN*a*/UN*r\"."
+  },
+
+  {
+    "serial": 2,
+    "level": 1,
+    "character": "イ",
+    "reading": "i",
+    "mnemonic": "*KK* イ */KK*. looks like an *KK**UN*ea*/UN*gle*/KK*, standing on the ground, or on a branch, or wherever. You see its legs and its back, curved down like an eagle's?"
+  },
+
+  {
+    "serial": 3,
+    "level": 1,
+    "character": "ウ",
+    "reading": "u",
+    "mnemonic": "This katakana character looks a lot like its hiragana counterpart: *KK*う*/KK*. It should be similar enough to use as a mnemonic to remember what it is."
+  },
+  {
+    "serial": 4,
+    "level": 1,
+    "character": "エ",
+    "reading": "e",
+    "mnemonic": "Imagine this is a girder an *KK**UN*e*/UN*ngineer*/KK* would use to build buildings. This character is in the shape of the end of a girder, and its made up of them too. Or, you can think of it like an *KK**UN*e*/UN*levator*KK*, with its doors closed"
+  },
+
+  {
+    "serial": 5,
+    "level": 1,
+    "character": "オ",
+    "reading": "o",
+    "mnemonic": "This kana looks like an *KK*opera*/KK* singer. His mouth is shaped like an *KK*o*/KK* and he's singing \"*KK**UN*Oh*/UN*hhh*/KK* !\" "
+  },
+
+  {
+    "serial": 6,
+    "level": 1,
+    "character": "カ",
+    "reading": "ka",
+    "mnemonic": "It looks just like its hiragana counterpart: *KK*か*/KK*, though it's missing that little extra line. Close enough to make it easy to remember, though."
+  },
+
+  {
+    "serial": 7,
+    "level": 1,
+    "character": "キ",
+    "reading": "ki",
+    "mnemonic": "It looks like the hiragana *KK*き*/KK* (the top part at least) and also looks like part of a weird *KK**UN*key*/UN**KK*."
+  },
+
+  {
+    "serial": 8,
+    "level": 1,
+    "character": "ク",
+    "reading": "ku",
+    "mnemonic": "This looks like a long *KK*cook*/KK*'s hat."
+  },
+  {
+    "serial": 9,
+    "level": 1,
+    "character": "ケ",
+    "reading": "ke",
+    "mnemonic": "It looks like the letter *KK*K*/KK*!"
+  },
+  {
+    "serial": 10,
+    "level": 1,
+    "character": "コ",
+    "reading": "ko",
+    "mnemonic": "See the two 90 degree *KK**UN*co*/UN*rners*/KK* ? The two corners are what help you to remember that this is \"ko.\" "
+  }
+]
