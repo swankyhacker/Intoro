@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app"
-import { FIREBASE_API_KEY, APP_ENV, DEV_OS } from "@env"
+import * as dotenv from "dotenv"
 
+dotenv.config()
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -11,7 +12,7 @@ import { getAuth, connectAuthEmulator } from "firebase/auth"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: FIREBASE_API_KEY,
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "intoro-1ba81.firebaseapp.com",
   projectId: "intoro-1ba81",
   storageBucket: "intoro-1ba81.appspot.com",
@@ -29,8 +30,8 @@ const functions = getFunctions(app)
 const auth = getAuth(app)
 
 // For development environments, use emulators
-if (APP_ENV === "development") {
-  const host = DEV_OS === "android" ? "10.0.2.2" : "localhost"
+if (process.env.APP_ENV === "development") {
+  const host = process.env.DEV_OS === "android" ? "10.0.2.2" : "localhost"
   connectFirestoreEmulator(db, "localhost", 8080)
   connectFunctionsEmulator(functions, "localhost", 5001)
   connectAuthEmulator(auth, `http://${host}:9099`)
