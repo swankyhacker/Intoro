@@ -8,10 +8,6 @@ const IntoroButton = ({
   onPress,
   ...props
 }) => {
-  const { style } = props
-
-  console.log(logoURI)
-
   if (logoURI !== undefined) {
     return (
       <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
