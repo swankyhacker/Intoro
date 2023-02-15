@@ -18,6 +18,7 @@ const firebaseConfig = {
   messagingSenderId: "79564034518",
   appId: "1:79564034518:web:d756a1b60ac8e11fda1477",
 }
+console.log(APP_ENV)
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
@@ -32,7 +33,7 @@ const auth = getAuth(app)
 if (APP_ENV === "development") {
   connectFirestoreEmulator(db, "localhost", 8080)
   connectFunctionsEmulator(functions, "localhost", 5001)
-  connectAuthEmulator(auth, "http://10.0.2.2:9099")
+  connectAuthEmulator(auth, "http://localhost:9099")
 }
 
 export { auth, db, functions }
