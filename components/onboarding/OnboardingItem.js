@@ -29,13 +29,13 @@ export default OnboardingItem
 const styles = StyleSheet.create({
   onboardingTitle: {
     fontWeight: "800",
-    fontSize: "28",
+    fontSize: 28,
     textAlign: "center",
     marginBottom: 10,
   },
   onboardingSubtitle: {
     fontWeight: "300",
     textAlign: "center",
-    fontSize: "16",
+    fontSize: 16,
   },
 })
