@@ -2,9 +2,9 @@ import { StyleSheet, Text, View, Dimensions, Image } from "react-native"
 const { width, height } = Dimensions.get("screen")
 
 import IntoroButton from "@components/common/IntoroButton"
-import CharacterGrid from "@components/characterChart/CharacterGrid"
+import KanaGrid from "@components/kanaChart/KanaGrid"
 
-const CharacterLevel = ({ level }) => {
+const KanaLevel = ({ type, level }) => {
   return (
     <View>
       <View style={{ width: 100, marginLeft: "auto" }}>
@@ -20,9 +20,9 @@ const CharacterLevel = ({ level }) => {
           text={`Level ${level}`}
         />
       </View>
-      <CharacterGrid />
+      <KanaGrid type={type} />
     </View>
   )
 }
 
-export default CharacterLevel
+export default KanaLevel

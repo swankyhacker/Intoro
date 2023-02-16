@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, Dimensions, Image } from "react-native"
 const { width, height } = Dimensions.get("screen")
 
-const Item = ({ item }) => {
+const Item = ({ item, backgroundColor }) => {
   return (
-    <View style={styles.item}>
+    <View style={{ ...styles.item, backgroundColor }}>
       <Image
         style={{ width: 45, height: 45, resizeMode: "contain" }}
         source={{
@@ -14,19 +14,21 @@ const Item = ({ item }) => {
   )
 }
 
-const CharacterGrid = () => {
+const KanaGrid = ({ type }) => {
+  const backgroundColor = type === "Katakana" ? "#E990A0" : "#7B9EE3"
+  console.log(backgroundColor)
   return (
     <View style={styles.gridContainer}>
       {Array(10)
         .fill(0)
         .map(() => (
-          <Item />
+          <Item backgroundColor={backgroundColor} />
         ))}
     </View>
   )
 }
 
-export default CharacterGrid
+export default KanaGrid
 
 const styles = StyleSheet.create({
   gridContainer: {
@@ -51,7 +53,6 @@ const styles = StyleSheet.create({
 
     // my visual styles; not important for grid
     padding: 20,
-    backgroundColor: "#7B9EE3",
     borderRadius: 12,
     borderColor: "#fff",
   },

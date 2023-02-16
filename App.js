@@ -4,14 +4,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import Login from "@screens/Login"
 import Register from "@screens/Register"
 import Onboarding from "@screens/Onboarding"
-import CharacterChart from "@screens/CharacterChart"
+import KanaChart from "@screens/KanaChart"
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Onboarding">
+      <Stack.Navigator initialRouteName="KanaChart">
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
@@ -28,8 +28,8 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="CharacterChart"
-          component={CharacterChart}
+          name="KanaChart"
+          component={KanaChart}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
