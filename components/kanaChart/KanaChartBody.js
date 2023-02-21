@@ -52,11 +52,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   chartContainer: {
-    height: 250,
-    marginBottom: 30,
+    height: 360,
+    marginBottom: 50,
   },
   chartTitle: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: "600",
   },
 })

@@ -17,7 +17,6 @@ export default KanaLevel
 const style = StyleSheet.create({
   levelContainer: {
     marginLeft: "auto",
-    marginRight: 12,
     backgroundColor: "#F4D23C",
     paddingVertical: 8,
     paddingHorizontal: 20,

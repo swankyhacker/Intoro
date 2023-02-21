@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native"
 import { useState } from "react"
 import intoroLogo from "@assets/logo/IntoroLogo.png"
-import IntoroButton from "@components/common/IntoroButton"
-import KanaLevel from "@components/kanaChart/KanaLevel"
 import KanaChartBody from "@components/kanaChart/KanaChartBody"
+
+const { width, height } = Dimensions.get("screen")
 
 const KanaChart = ({ navigation }) => {
   const [kana, setKana] = useState("Hiragana")
@@ -29,8 +29,6 @@ const KanaChart = ({ navigation }) => {
       <View style={styles.bodyContainer}>
         <KanaChartBody kana={kana} handleSwitch={handleSwitch} />
       </View>
-
-      {/* TODO: Add NavBar */}
     </View>
   )
 }
@@ -42,16 +40,12 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 50,
     backgroundColor: "#fff",
-    paddingHorizontal: 20,
+    paddingHorizontal: 25,
   },
   logo: {
     flex: 1,
   },
   bodyContainer: {
-    flex: 5,
-  },
-  chartContainer: {
-    flex: 5,
-    marginTop: 30,
+    flex: 4,
   },
 })

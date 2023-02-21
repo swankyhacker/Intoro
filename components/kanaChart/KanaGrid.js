@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View, Dimensions, Image } from "react-native"
-const { width, height } = Dimensions.get("screen")
+const { width } = Dimensions.get("screen")
+
+const chartContainerWidth = width - 50
 
 const Item = ({ backgroundColor }) => {
   const generateBoxShadowStyle = (
@@ -59,19 +61,19 @@ export default KanaGrid
 const styles = StyleSheet.create({
   gridContainer: {
     marginLeft: -8,
-    marginTop: 10,
+    marginTop: 20,
     flexDirection: "row",
     flexWrap: "wrap",
-    width: 350,
+    width: chartContainerWidth,
     marginBottom: 30,
     alignItems: "center",
     justifyContent: "center",
   },
   item: {
     flex: 1,
-    minWidth: 0.17 * 350,
-    maxWidth: 0.17 * 350,
-    height: 0.17 * 350,
+    minWidth: 0.17 * chartContainerWidth,
+    maxWidth: 0.17 * chartContainerWidth,
+    height: 0.17 * chartContainerWidth,
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 8,
