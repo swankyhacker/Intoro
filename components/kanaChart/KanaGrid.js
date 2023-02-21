@@ -2,15 +2,41 @@ import { StyleSheet, Text, View, Dimensions, Image } from "react-native"
 const { width, height } = Dimensions.get("screen")
 
 const Item = ({ backgroundColor }) => {
+  const generateBoxShadowStyle = (
+    xOffset,
+    yOffset,
+    shadowColorIos,
+    shadowOpacity,
+    shadowRadius,
+    elevation,
+    shadowColorAndroid
+  ) => {
+    if (Platform.OS === "ios") {
+      return {
+        shadowColor: shadowColorIos,
+        shadowOffset: { width: xOffset, height: yOffset },
+        shadowOpacity,
+        shadowRadius,
+      }
+    } else if (Platform.OS === "android") {
+      return {
+        elevation,
+        shadowColor: shadowColorAndroid,
+      }
+    }
+  }
+
+  let boxShadow = generateBoxShadowStyle(-2, 4, "#171717", 0.4, 3, 4, "#171717")
+
   return (
-    <View style={{ ...styles.item, backgroundColor }}>
+    <View style={{ ...styles.item, backgroundColor, ...boxShadow }}>
       <Image
         style={{ width: 35, height: 35, resizeMode: "contain" }}
         source={{
           uri: "https://cdn-icons-png.flaticon.com/512/15/15490.png",
         }}
       />
-      <Text>A</Text>
+      <Text>KA</Text>
     </View>
   )
 }
@@ -52,6 +78,5 @@ const styles = StyleSheet.create({
     marginTop: 8,
     padding: 20,
     borderRadius: 12,
-    borderColor: "#fff",
   },
 })
