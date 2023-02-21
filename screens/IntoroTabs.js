@@ -4,13 +4,14 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Foundation from "react-native-vector-icons/Foundation"
 import Timetable from "@screens/Timetable"
 import Home from "@screens/Home"
+import LearningPad from "./LearningPad"
 
 const IntoroTabs = () => {
   const Tab = createMaterialBottomTabNavigator()
 
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Learning Pad"
       activeColor="#7B9EE3"
       barStyle={{ backgroundColor: "#fff" }}
     >
@@ -34,6 +35,7 @@ const IntoroTabs = () => {
           ),
         }}
       />
+      <Tab.Screen name="Learning Pad" component={LearningPad} />
       <Tab.Screen
         name="Kana Chart"
         component={KanaChart}
