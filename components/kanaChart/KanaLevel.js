@@ -1,28 +1,26 @@
-import { StyleSheet, Text, View, Dimensions, Image } from "react-native"
-const { width, height } = Dimensions.get("screen")
-
-import IntoroButton from "@components/common/IntoroButton"
+import { StyleSheet, Text, View } from "react-native"
 import KanaGrid from "@components/kanaChart/KanaGrid"
 
-const KanaLevel = ({ type, level }) => {
+const KanaLevel = ({ kana, level }) => {
   return (
     <View>
-      <View style={{ width: 100, marginLeft: "auto" }}>
-        <IntoroButton
-          buttonStyle={{
-            paddingHorizontal: 0,
-            paddingVertical: 6,
-          }}
-          fontStyle={{
-            fontSize: 14,
-            fontWeight: "500",
-          }}
-          text={`Level ${level}`}
-        />
+      <View style={style.levelContainer}>
+        <Text>{`Level ${level}`}</Text>
       </View>
-      <KanaGrid type={type} />
+      <KanaGrid kana={kana} />
     </View>
   )
 }
 
 export default KanaLevel
+
+const style = StyleSheet.create({
+  levelContainer: {
+    marginLeft: "auto",
+    marginRight: 12,
+    backgroundColor: "#F4D23C",
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+  },
+})

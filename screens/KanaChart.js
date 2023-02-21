@@ -5,11 +5,8 @@ import IntoroButton from "@components/common/IntoroButton"
 import KanaLevel from "@components/kanaChart/KanaLevel"
 import KanaChartBody from "@components/kanaChart/KanaChartBody"
 
-const { width, height } = Dimensions.get("screen")
-
 const KanaChart = ({ navigation }) => {
   const [kana, setKana] = useState("Hiragana")
-  console.log(kana)
 
   const handleSwitch = () => {
     if (kana === "Hiragana") {
