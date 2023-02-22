@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, Dimensions } from "react-native"
+import { StyleSheet, View, Image, Dimensions } from "react-native"
 import { useState } from "react"
 import intoroLogo from "@assets/logo/IntoroLogo.png"
 import KanaChartBody from "@components/kanaChart/KanaChartBody"
