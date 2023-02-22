@@ -2,6 +2,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native"
 import React from "react"
 import KanaLevel from "@components/kanaChart/KanaLevel"
 import IntoroButton from "@components/common/IntoroButton"
+import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons"
 
 const KanaChartBody = ({ kana, handleSwitch }) => {
   //TODO: Fetching Function kana chart data.
@@ -25,15 +26,14 @@ const KanaChartBody = ({ kana, handleSwitch }) => {
       <View
         style={{
           flex: 1,
-          width: "50%",
+          width: "40%",
           marginLeft: "auto",
           marginRight: "auto",
         }}
       >
         <IntoroButton
           onPress={handleSwitch}
-          buttonStyle={{}}
-          logoURI={"https://cdn-icons-png.flaticon.com/512/519/519848.png"}
+          icon={<SimpleLineIcons size={18} name="refresh" />}
           fontStyle={{
             fontSize: 17,
             fontWeight: "600",

@@ -2,25 +2,23 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 const IntoroButton = ({
   text,
-  logoURI = undefined,
+  icon,
   fontStyle = undefined,
   buttonStyle = undefined,
   onPress,
   ...props
 }) => {
-  if (logoURI !== undefined) {
+  if (icon !== undefined) {
     return (
       <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
         <View
           style={{
-            width: "70%",
             flexDirection: "row",
+            alignItems: "center",
           }}
         >
-          <Text style={[styles.buttonText, fontStyle, { marginRight: 15 }]}>
-            {text}
-          </Text>
-          <Image source={{ uri: logoURI }} style={{ width: 20 }} />
+          <Text style={[styles.buttonText, fontStyle]}>{text}</Text>
+          <View>{icon}</View>
         </View>
       </TouchableOpacity>
     )
@@ -41,11 +39,13 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 15,
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: "flex-end",
   },
   buttonText: {
+    textAlign: "center",
     color: "black",
     fontWeight: "700",
     fontSize: 16,
+    flex: 1,
   },
 })

@@ -11,7 +11,7 @@ const IntoroTabs = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="Learning Pad"
+      initialRouteName="Home"
       activeColor="#7B9EE3"
       barStyle={{ backgroundColor: "#fff" }}
     >
