@@ -2,6 +2,7 @@
   "name": "intoro",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
+  "type": "module",
   "scripts": {
     "start": "APP_ENV=development expo start",
     "start:staging": "APP_ENV=staging expo start",
@@ -9,7 +10,10 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "prepare": "husky install",
-    "emulators": "firebase emulators:start --import ./local --export-on-exit"
+    "emulators": "firebase emulators:start --import ./local --export-on-exit",
+    "seed": "APP_ENV=development node seed/index.js",
+    "seed:hiragana": "APP_ENV=development node seed/index.js hiragana",
+    "seed:katakana": "APP_ENV=development node seed/index.js katakana"
   },
   "dependencies": {
     "@react-navigation/material-bottom-tabs": "^6.2.13",
@@ -28,6 +32,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "dotenv": "^16.0.3",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "metro-react-native-babel-preset": "^0.75.0",

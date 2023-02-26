@@ -1,0 +1,76 @@
+[
+  {
+    "serial": 1,
+    "level": 2,
+    "character": "サ",
+    "reading": "sa",
+    "mnemonic": "Look at these two fish that are hanging on a skewer. The small one is a *KK**UN*sa*/UN*rdine*/KK* and the bigger one is a *KK**UN*sa*/UN*lmon*/KK*. You can tell that by the size difference. You can also remember this is \"sa\" because fish are called さかな (*UN*sa*/UN*kana) in Japanese"
+  },
+
+  {
+    "serial": 2,
+    "level": 2,
+    "character": "シ",
+    "reading": "shi",
+    "mnemonic": "This kana looks like a smiley face, but something is wrong with it. Both eyes are sideways and stacked on top of each other like some deep *KK**UN*sea*/UN**/KK* fish. *KK**UN*She*/UN**KK* has a very weird face."
+  },
+
+  {
+    "serial": 3,
+    "level": 2,
+    "character": "ス",
+    "reading": "su",
+    "mnemonic": "What's that up there? It’s *KK**UN*Su*/UN*perman*/KK* walking in the sky! Wait — upon closer inspection, it's just his disembodied *KK**UN*su*/UN*per*UN*su*/UN*it*/KK*. …W-Where the heck did he go naked?"
+  },
+  {
+    "serial": 4,
+    "level": 2,
+    "character": "セ",
+    "reading": "se",
+    "mnemonic": "It looks really similar to the hiragana *KK*せ*/KK*, so you should be able to use that to remember this kana."
+  },
+  {
+    "serial": 5,
+    "level": 2,
+    "character": "ソ",
+    "reading": "so",
+    "mnemonic": "It is one needle and a long thread, which you use to *KK*sew*/KK*. Remember, needles are always vertical like this needle, because you need to stab it through something, straight down. This will help you to differentiate this one and the very similar ン, the katakana for \"n.\" "
+  },
+  {
+    "serial": 6,
+    "level": 2,
+    "character": "タ",
+    "reading": "ta",
+    "mnemonic": "タ looks like a kite. Kites are called *KK**UN*た*/UN*こ (*UN*ta*/UN*ko)*/KK* in Japanese. This is actually a *KK**UN*ta*/UN*co*/KK* kite, too. It looks exactly like a giant taco flying high in the sky. Tacos are all the rage these days!"
+  },
+
+  {
+    "serial": 7,
+    "level": 2,
+    "character": "チ",
+    "reading": "chi",
+    "mnemonic": "Doesn't this look like a *KK**UN*chee*/UN*rleader*/KK*, doing a cheer?"
+  },
+  {
+    "serial": 8,
+    "level": 2,
+    "character": "ツ",
+    "reading": "tsu",
+    "mnemonic": "While ソ (so) had one needle and thread, ツ has two needles and thread. Remember, needles are vertical because you use them to stab into cloth, straight down. This will help you to differentiate this one from シ (shi), which has more horizontal lines. Horizontal lines means it's a face, vertical means it's needles. So this one has *KK**UN*two*/UN**KK* needles."
+  },
+  {
+    "serial": 9,
+    "level": 2,
+    "character": "テ",
+    "reading": "te",
+    "mnemonic": "This kana looks like a *KK**UN*te*/UN*lephone pole.*/KK*"
+  },
+
+  {
+    "serial": 10,
+    "level": 2,
+    "character": "ト",
+    "reading": "to",
+    "mnemonic": "It looks just like a *KK**UN*to*/UN*tem pole*/KK*."
+  }
+]

@@ -13,20 +13,25 @@ $ yarn
 ```
 We will use the `yarn` packet manager for managing our dependencies. Please do **NOT** use `npm`.
 
-2. You will need to have a ```firebase``` account for interacting with the project. Contact __[@swankyhacker](https://github.com/swankyhacker)__ for access to Intoro's firebase credentials. Sign into your firebase account with
+2. You will need to have a ```firebase``` account for interacting with the project. Contact __[@swankyhacker](https://github.com/swankyhacker)__ for access to Intoro's firebase credentials. Sign into your firebase account with:
 ```
 $ firebase login
 ```
 
 3. It is recommended to install the recommended ```vscode``` extensions for this project. 
 
-4. For local development, use the following command to start an Expo server.
+4. For local development, use the following command to start an Expo server:
 ```
 $ yarn start
 ```
 **NOTE**: You will have your own copy of Cloud Firestore/Functions/Auth in an emulator for local development. The following command should be run in parallel with your Expo server in another terminal window:
 ```
 $ yarn emulators 
+```
+
+5. Use the following command to seed your Firestore emulator:
+```
+$ yarn seed
 ```
 
 
