@@ -83,8 +83,8 @@ const Onboarding = ({ navigation }) => {
         <Indicator scrollX={scrollX} />
         <IntoroButton
           text={"Start Learning!"}
-          style={{ marginTop: 15 }}
-          navigation={navigation}
+          buttonStyle={{ marginTop: 15 }}
+          onPress={() => navigation.navigate("Login")}
         />
       </View>
     </View>
