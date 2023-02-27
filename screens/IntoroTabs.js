@@ -35,7 +35,16 @@ const IntoroTabs = () => {
           ),
         }}
       />
-      <Tab.Screen name="Learning Pad" component={LearningPad} />
+      <Tab.Screen
+        name="Learning Pad"
+        component={LearningPad}
+        options={{
+          tabBarLabel: "Learning Pad",
+          tabBarIcon: ({ color }) => (
+            <Foundation name="clipboard-pencil" color={color} size={26} />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Kana Chart"
         component={KanaChart}

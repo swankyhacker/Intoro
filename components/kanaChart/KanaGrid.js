@@ -49,8 +49,8 @@ const KanaGrid = ({ kana }) => {
     <View style={styles.gridContainer}>
       {Array(10)
         .fill(0)
-        .map(() => (
-          <Item backgroundColor={backgroundColor} />
+        .map((_, index) => (
+          <Item backgroundColor={backgroundColor} key={index} />
         ))}
     </View>
   )

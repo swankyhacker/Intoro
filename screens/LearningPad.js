@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native"
+import { Image, StyleSheet, Text, View } from "react-native"
+
 import intoroLogo from "@assets/logo/IntoroLogo.png"
 import KanaGrid from "@components/kanaChart/KanaGrid"
 import LearningPadButton from "@components/learningPad/LearningPadButton"

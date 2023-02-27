@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   buttonText: {
-    flex: "3",
+    flex: 3,
     fontSize: 18,
     fontWeight: "500",
     textAlign: "center",
