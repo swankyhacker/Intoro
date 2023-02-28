@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native"
 import React from "react"
 import KanaLevel from "@components/kanaChart/KanaLevel"
-import IntoroButton from "@components/common/IntoroButton"
+import { IntoroButton } from "@components/common"
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons"
 
 const KanaChartBody = ({ kana, handleSwitch }) => {

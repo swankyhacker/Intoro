@@ -1,16 +1,17 @@
 import { useRef, useState } from "react"
-import { StyleSheet, Text, View, Dimensions, Image } from "react-native"
+import { Dimensions, Image, StyleSheet, Text, View } from "react-native"
 
 import { AuthButton, AuthFooter, ErrorSnackbar } from "@components/auth"
 import { GoogleLoginButton, IntoroTextInput } from "@components/common"
 
 import { signInWithEmail, signInWithGoogle } from "@api/auth"
+import { storeData } from "@api/storage"
 
 import intoroLogo from "@assets/logo/IntoroLogo.png"
 
 const { width } = Dimensions.get("screen")
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [snackBar, setSnackBar] = useState(false)
@@ -19,7 +20,8 @@ const Login = () => {
   const handleLogin = async (email, password) => {
     try {
       const user = await signInWithEmail(email, password)
-      console.log("User", user)
+      await storeData("credentials", user)
+      navigation.navigate("IntoroTabs")
     } catch (error) {
       console.log("Error", error.message)
       errorMessage.current = error.message

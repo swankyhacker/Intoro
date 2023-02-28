@@ -1,49 +1,27 @@
-import { Image, StyleSheet, Text, View } from "react-native"
+import { StyleSheet, Text, View } from "react-native"
 
-import intoroLogo from "@assets/logo/IntoroLogo.png"
+import { IntoroWrapper } from "@components/common"
 import KanaGrid from "@components/kanaChart/KanaGrid"
 import LearningPadButton from "@components/learningPad/LearningPadButton"
 
-const LearningPad = () => {
+export default function LearningPad() {
   return (
-    <View style={styles.container}>
-      <View style={styles.logo}>
-        <Image
-          source={intoroLogo}
-          style={{ width: 100, height: 100, resizeMode: "contain" }}
-        />
+    <IntoroWrapper>
+      <View style={styles.buttonWrapper}>
+        <LearningPadButton text={"Lesson"} number={0} />
+        <LearningPadButton text={"Review"} number={0} />
       </View>
-      <View style={styles.bodyContainer}>
-        <View style={styles.buttonWrapper}>
-          <LearningPadButton text={"Lesson"} number={0} />
-          <LearningPadButton text={"Review"} number={0} />
-        </View>
-        <View>
-          <Text style={styles.title}>Hiragana</Text>
-          <KanaGrid kana={"Hiragana"} />
-          <Text style={styles.title}>Katakana</Text>
-          <KanaGrid kana={"Katakana"} />
-        </View>
+      <View>
+        <Text style={styles.title}>Hiragana</Text>
+        <KanaGrid kana={"Hiragana"} />
+        <Text style={styles.title}>Katakana</Text>
+        <KanaGrid kana={"Katakana"} />
       </View>
-    </View>
+    </IntoroWrapper>
   )
 }
 
-export default LearningPad
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingVertical: 50,
-    backgroundColor: "#fff",
-    paddingHorizontal: 25,
-  },
-  logo: {
-    flex: 1,
-  },
-  bodyContainer: {
-    flex: 5,
-  },
   buttonWrapper: {
     alignItems: "center",
   },

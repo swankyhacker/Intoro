@@ -1,17 +1,22 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-import Login from "@screens/Login"
-import Register from "@screens/Register"
-import Onboarding from "@screens/Onboarding"
+import { getCurrentUser } from "@api/auth"
 import IntoroTabs from "@screens/IntoroTabs"
+import Login from "@screens/Login"
+import Onboarding from "@screens/Onboarding"
+import Register from "@screens/Register"
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="IntoroTabs">
+      <Stack.Navigator
+        initialRouteName={
+          getCurrentUser() === null ? "Onboarding" : "IntoroTabs"
+        }
+      >
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}

@@ -1,7 +1,7 @@
 import functions from "firebase-functions"
 import admin from "firebase-admin"
 
-import { KANA } from "../types/types.js"
+import KANA from "../types/types.js"
 
 admin.initializeApp()
 

@@ -1,18 +1,13 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Animated,
-  Image,
-} from "react-native"
-const { width } = Dimensions.get("screen")
-import { useRef } from "react"
-import { StatusBar } from "expo-status-bar"
+import { Animated, Dimensions, Image, StyleSheet, View } from "react-native"
+
 import intoroLogo from "@assets/logo/IntoroLogo.png"
+import { IntoroButton } from "@components/common"
 import Indicator from "@components/onboarding/Indicator"
-import IntoroButton from "@components/common/IntoroButton"
 import OnboardingItem from "@components/onboarding/OnboardingItem"
+import { StatusBar } from "expo-status-bar"
+import { useRef } from "react"
+
+const { width } = Dimensions.get("screen")
 
 const DATA = [
   {

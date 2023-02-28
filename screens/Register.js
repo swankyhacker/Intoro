@@ -21,7 +21,8 @@ const Register = () => {
   const handleRegister = async () => {
     try {
       const user = await createUserWithEmail(email, password)
-      console.log("User", user)
+      await storeData("credentials", user)
+      navigation.navigate("IntoroTabs")
     } catch (error) {
       console.log("Error", error.message)
       errorMessage.current = error.message
