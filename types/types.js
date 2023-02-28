@@ -1,4 +1,4 @@
-export const KANA = {
+module.exports = {
   HIRAGANA: "hiragana",
   KATAKANA: "katakana",
 }
