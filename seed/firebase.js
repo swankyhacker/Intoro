@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app"
 import * as dotenv from "dotenv"
 
 dotenv.config()
-// TODO: Add SDKs for Firebase products that you want to use
+// Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 import { getFirestore, connectFirestoreEmulator } from "firebase/firestore"

@@ -1,0 +1,6 @@
+export default {
+  KATAKANA: "#E990A0",
+  HIRAGANA: "#7B9EE3",
+  SHADOW_COLOR_IOS: "#171717",
+  SHADOW_COLOR_ANDROID: "#171717",
+}

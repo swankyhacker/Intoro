@@ -6,12 +6,13 @@ import GoogleLoginButton from "@components/common/GoogleLoginButton"
 import IntoroTextInput from "@components/common/IntoroTextInput"
 
 import { createUserWithEmail } from "api/auth"
+import { storeData } from "@api/storage"
 
 import intoroLogo from "@assets/logo/IntoroLogo.png"
 
 const { width } = Dimensions.get("screen")
 
-const Register = () => {
+const Register = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")

@@ -1,18 +1,16 @@
 import { StyleSheet, Text, View } from "react-native"
-import KanaGrid from "@components/kanaChart/KanaGrid"
+import KanaGrid from "./KanaGrid"
 
-const KanaLevel = ({ kana, level }) => {
+export default function KanaLevel({ type, kana, level }) {
   return (
     <View>
       <View style={style.levelContainer}>
         <Text>{`Level ${level}`}</Text>
       </View>
-      <KanaGrid kana={kana} />
+      <KanaGrid kana={kana} type={type} />
     </View>
   )
 }
-
-export default KanaLevel
 
 const style = StyleSheet.create({
   levelContainer: {

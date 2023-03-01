@@ -1,7 +1,7 @@
 import { writeBatch } from "firebase/firestore"
-import { db } from "./firebase.js"
+import { db } from "../firebase.js"
 
-export const batchCreate = (data, collection, doc = null, prevBatch = null) => {
+export default (data, collection, doc = null, prevBatch = null) => {
   const batch = prevBatch ?? writeBatch(db)
   data.forEach((item) => {
     const ref = doc
