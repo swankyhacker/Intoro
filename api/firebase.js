@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app"
 import { FIREBASE_API_KEY, APP_ENV, DEV_OS } from "@env"
 
-// TODO: Add SDKs for Firebase products that you want to use
+// Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 import { getFirestore, connectFirestoreEmulator } from "firebase/firestore"
@@ -31,8 +31,8 @@ const auth = getAuth(app)
 // For development environments, use emulators
 if (APP_ENV === "development") {
   const host = DEV_OS === "android" ? "10.0.2.2" : "localhost"
-  connectFirestoreEmulator(db, "localhost", 8080)
-  connectFunctionsEmulator(functions, "localhost", 5001)
+  connectFirestoreEmulator(db, host, 8080)
+  connectFunctionsEmulator(functions, host, 5001)
   connectAuthEmulator(auth, `http://${host}:9099`)
 }
 

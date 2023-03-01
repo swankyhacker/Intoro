@@ -14,5 +14,9 @@ export const signInWithEmail = (email, password) => {
 }
 
 export const getCurrentUser = () => {
+  console.log(
+    "Current user:",
+    auth.currentUser ? auth.currentUser.email : auth.currentUser
+  )
   return auth.currentUser
 }

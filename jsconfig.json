@@ -5,7 +5,8 @@
       "@api/*": ["api/*"],
       "@screens/*": ["./screens/*"],
       "@components/*": ["./components/*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@types/*": ["./types/*"]
     }
   },
   "exclude": ["node_modules", "dist"]
