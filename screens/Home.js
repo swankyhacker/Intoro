@@ -24,7 +24,7 @@ const Home = ({ navigation }) => {
         <HomeTimetable />
         <View style={{ width: "70%" }}>
           <IntoroButton
-            onPress={() => navigation.navigate("Learning Pad")}
+            onPress={() => navigation.navigate("LearningPad")}
             text={"Learning Pad"}
             buttonStyle={{ borderRadius: 20, paddingVertical: 14 }}
             fontStyle={{ fontSize: 22, fontWeight: "500" }}

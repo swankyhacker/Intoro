@@ -31,7 +31,6 @@ export default TierBadge
 
 const styles = StyleSheet.create({
   tierContainer: {
-    marginTop: 20,
     justifyContent: "space-between",
     flexDirection: "row",
   },
