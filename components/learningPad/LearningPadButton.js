@@ -1,12 +1,28 @@
+import { useEffect, useState } from "react"
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native"
 
-const LearningPadButton = ({ text, number }) => {
+const LearningPadButton = ({ text, fetchData }) => {
+  const [number, setNumber] = useState(null)
+
+  const getData = async () => {
+    try {
+      const snapshot = await fetchData()
+      setNumber(snapshot.docs.length)
+    } catch (err) {
+      console.log(`Error while fetching ${text}:`, err)
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <TouchableOpacity>
       <View style={styles.buttonContainer}>
         <Text style={styles.buttonText}>{text}</Text>
         <View style={styles.numberContainer}>
-          <Text>{number}</Text>
+          <Text>{number !== null ? number : -1}</Text>
         </View>
       </View>
     </TouchableOpacity>
