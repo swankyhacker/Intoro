@@ -14,7 +14,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName={
-          getCurrentUser() === null ? "Onboarding" : "IntoroTabs"
+          getCurrentUser() === null ? "IntoroTabs" : "IntoroTabs"
         }
       >
         <Stack.Screen
