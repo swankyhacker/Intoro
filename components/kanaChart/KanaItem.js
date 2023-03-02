@@ -20,12 +20,7 @@ export default function KanaItem({ element }) {
         ...styles.item,
         backgroundColor:
           element.type === Types.HIRAGANA ? Colors.HIRAGANA : Colors.KATAKANA,
-        opacity:
-          element.unlocked !== undefined
-            ? element.unlocked === true
-              ? 1
-              : 0.4
-            : 1,
+        opacity: element.unlocked === true ? 1 : 0.4,
         ...boxShadow,
       }}
     >

@@ -1,19 +1,19 @@
 import { collection, getDocs, orderBy, query } from "firebase/firestore"
 import { db } from "../firebase.js"
 
-import { Kana } from "@types/kana.js"
+import getUserKana from "./getUserKana.js"
 
 // Returns a particular type of kana for all levels
 export default async (type) => {
   const kanaByLevel = {}
   const q = query(collection(db, type), orderBy("serial", "asc"))
   const querySnapshot = await getDocs(q)
-  querySnapshot.forEach((doc) => {
-    const { level } = doc.data()
-    if (!kanaByLevel[level]) {
-      kanaByLevel[level] = [new Kana(doc.data(), type)]
+  const unlockedKana = await getUserKana(querySnapshot, type)
+  unlockedKana.forEach((kana) => {
+    if (!kanaByLevel[kana.level]) {
+      kanaByLevel[kana.level] = [kana]
     } else {
-      kanaByLevel[level].push(new Kana(doc.data(), type))
+      kanaByLevel[kana.level].push(kana)
     }
   })
   return kanaByLevel

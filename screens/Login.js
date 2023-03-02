@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
   const handleLogin = async (email, password) => {
     try {
       const user = await signInWithEmail(email, password)
-      await storeData("credentials", user)
+      await storeData("credentials", { email, password })
       navigation.navigate("IntoroTabs")
     } catch (error) {
       console.log("Error", error.message)
