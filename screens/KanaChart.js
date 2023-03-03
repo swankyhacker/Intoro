@@ -10,7 +10,7 @@ import { getAllKana } from "@api/firestore"
 
 import Kana from "@types/types.js"
 
-export default function KanaChart() {
+export default function KanaChart({ navigation }) {
   const [type, setType] = useState(Kana.HIRAGANA)
   const [currentKana, setCurrentKana] = useState({})
 
@@ -46,6 +46,7 @@ export default function KanaChart() {
               {Object.keys(currentKana).map((element) => {
                 return (
                   <KanaLevel
+                    navigation={navigation}
                     kana={currentKana[element]}
                     type={type}
                     level={element}
@@ -63,6 +64,7 @@ export default function KanaChart() {
             />
           )}
         </View>
+
         {/* Switch Button -> Switch between Hiragana and Katakana */}
         <View style={styles.buttonContainer}>
           <IntoroButton
@@ -87,6 +89,7 @@ const styles = StyleSheet.create({
   chartContainer: {
     flex: 6,
     justifyContent: "center",
+    alignItems: "center",
   },
   chartTitle: {
     fontSize: 26,
@@ -98,6 +101,7 @@ const styles = StyleSheet.create({
     width: "40%",
     marginLeft: "auto",
     marginRight: "auto",
+    marginTop: 5,
   },
   buttonFontStyle: {
     fontSize: 17,

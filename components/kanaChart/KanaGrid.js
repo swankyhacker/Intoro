@@ -3,11 +3,12 @@ import KanaItem from "./KanaItem"
 
 const { width } = Dimensions.get("screen")
 
-export default function KanaGrid({ kana }) {
+export default function KanaGrid({ navigation, kana }) {
+  console.log(kana)
   return (
     <View style={styles.gridContainer}>
       {kana.map((element, index) => (
-        <KanaItem element={element} key={index} />
+        <KanaItem navigation={navigation} element={element} key={index} />
       ))}
     </View>
   )
@@ -18,10 +19,10 @@ const styles = StyleSheet.create({
   gridContainer: {
     marginLeft: -8,
     marginTop: 20,
+    marginBottom: 30,
     flexDirection: "row",
     flexWrap: "wrap",
     width: chartContainerWidth,
-    marginBottom: 30,
     alignItems: "center",
     justifyContent: "center",
   },

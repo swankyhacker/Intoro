@@ -1,10 +1,16 @@
-import { Dimensions, StyleSheet, View, Text } from "react-native"
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+} from "react-native"
 import Colors from "@types/colors.js"
 import Types from "@types/types"
 
 const { width } = Dimensions.get("screen")
 
-export default function KanaItem({ element }) {
+export default function KanaItem({ navigation, element }) {
   let boxShadow = generateBoxShadowStyle(
     -2,
     4,
@@ -14,19 +20,28 @@ export default function KanaItem({ element }) {
     4,
     Colors.SHADOW_COLOR_ANDROID
   )
+
+  const handleClick = () => {
+    navigation.navigate("Flashcard", {
+      element: element,
+    })
+  }
+
   return (
-    <View
-      style={{
-        ...styles.item,
-        backgroundColor:
-          element.type === Types.HIRAGANA ? Colors.HIRAGANA : Colors.KATAKANA,
-        opacity: element.unlocked === true ? 1 : 0.4,
-        ...boxShadow,
-      }}
-    >
-      <Text style={styles.character}>{element.character}</Text>
-      <Text style={styles.reading}>{element.reading}</Text>
-    </View>
+    <TouchableOpacity onPress={handleClick}>
+      <View
+        style={{
+          ...styles.item,
+          backgroundColor:
+            element.type === Types.HIRAGANA ? Colors.HIRAGANA : Colors.KATAKANA,
+          opacity: element.unlocked === true ? 1 : 0.4,
+          ...boxShadow,
+        }}
+      >
+        <Text style={styles.character}>{element.character}</Text>
+        <Text style={styles.reading}>{element.reading}</Text>
+      </View>
+    </TouchableOpacity>
   )
 }
 
@@ -39,8 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 8,
-    marginTop: 8,
-    paddingVertical: 14,
+    marginTop: 10,
     borderRadius: 12,
   },
   character: {

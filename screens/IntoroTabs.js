@@ -1,10 +1,9 @@
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs"
-import KanaChart from "@screens/KanaChart"
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 import Foundation from "react-native-vector-icons/Foundation"
 import Timetable from "@screens/Timetable"
-import Home from "@screens/Home"
-import LearningPad from "./LearningPad"
+import HomeTab from "./HomeTab"
+import KanaTab from "./KanaTab"
 
 const IntoroTabs = () => {
   const Tab = createMaterialBottomTabNavigator()
@@ -26,8 +25,8 @@ const IntoroTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeTab"
+        component={HomeTab}
         options={{
           tabBarLabel: "Home",
           tabBarIcon: ({ color }) => (
@@ -36,18 +35,8 @@ const IntoroTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Learning Pad"
-        component={LearningPad}
-        options={{
-          tabBarLabel: "Learning Pad",
-          tabBarIcon: ({ color }) => (
-            <Foundation name="clipboard-pencil" color={color} size={26} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Kana Chart"
-        component={KanaChart}
+        name="KanaTab"
+        component={KanaTab}
         options={{
           tabBarLabel: "Kana Chart",
           tabBarIcon: ({ color }) => (
