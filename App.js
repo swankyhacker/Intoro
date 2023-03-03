@@ -6,7 +6,6 @@ import IntoroTabs from "@screens/IntoroTabs"
 import Login from "@screens/Login"
 import Onboarding from "@screens/Onboarding"
 import Register from "@screens/Register"
-import LearningPad from "@screens/LearningPad"
 
 const Stack = createNativeStackNavigator()
 

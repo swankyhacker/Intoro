@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from "react-native"
 import KanaGrid from "./KanaGrid"
 
-export default function KanaLevel({ type, kana, level }) {
+export default function KanaLevel({ navigation, type, kana, level }) {
   return (
     <View>
       <View style={style.levelContainer}>
         <Text>{`Level ${level}`}</Text>
       </View>
-      <KanaGrid kana={kana} type={type} />
+      <KanaGrid navigation={navigation} kana={kana} type={type} />
     </View>
   )
 }

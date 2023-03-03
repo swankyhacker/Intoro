@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native"
+import { StyleSheet, Text, View, Image } from "react-native"
 import intoroLogo from "@assets/logo/IntoroLogo.png"
+import profile from "@assets/icon/profile.png"
 import IntoroProgress from "@components/home/IntoroProgress"
 import TierBadge from "@components/home/TierBadge"
 import HomeTimetable from "@components/home/HomeTimetable"
@@ -13,6 +14,7 @@ const Home = ({ navigation }) => {
           source={intoroLogo}
           style={{ width: 100, height: 100, resizeMode: "contain" }}
         />
+        <Image source={profile} style={{ width: 50, resizeMode: "contain" }} />
       </View>
 
       <View style={styles.bodyContainer}>
@@ -20,14 +22,17 @@ const Home = ({ navigation }) => {
           <IntoroProgress text={"Completed"} value={38} />
           <IntoroProgress text={"Char Unlock"} value={62} />
         </View>
+
         <TierBadge />
+
         <HomeTimetable />
-        <View style={{ width: "70%" }}>
+
+        <View style={{ width: "50%" }}>
           <IntoroButton
             onPress={() => navigation.navigate("LearningPad")}
             text={"Learning Pad"}
-            buttonStyle={{ borderRadius: 20, paddingVertical: 14 }}
-            fontStyle={{ fontSize: 22, fontWeight: "500" }}
+            buttonStyle={{ borderRadius: 20, paddingVertical: 10 }}
+            fontStyle={{ fontSize: 18, fontWeight: "500" }}
           />
         </View>
       </View>
@@ -46,6 +51,9 @@ const styles = StyleSheet.create({
   },
   logo: {
     flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   bodyContainer: {
     flex: 6,
