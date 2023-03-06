@@ -1,17 +1,14 @@
 import { NavigationContainer } from "@react-navigation/native"
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { useEffect, useState } from "react"
 import { LogBox } from "react-native"
-
-import IntoroTabs from "@screens/IntoroTabs"
-import Login from "@screens/Login"
-import Onboarding from "@screens/Onboarding"
-import Register from "@screens/Register"
+import { SafeAreaProvider } from "react-native-safe-area-context"
 
 import { signInWithEmail } from "@api/auth"
 import { getData } from "@api/storage"
 
-const Stack = createNativeStackNavigator()
+import { LessonsProvider } from "@context/LessonsContext"
+import { AppNavigator } from "@navigators/index"
+
 LogBox.ignoreAllLogs() //Hide all warning notifications on front-end
 
 export default function App() {
@@ -25,52 +22,31 @@ export default function App() {
           storedCredentials.email,
           storedCredentials.password
         )
-        return true
+        setSignedIn(true)
       } catch (err) {
         console.log("Invalid async storage credentials:", err)
-        return false
+        setSignedIn(false)
       }
     }
-    return false
   }
 
   useEffect(() => {
-    setSignedIn(() => asyncLogin())
+    asyncLogin()
   }, [])
 
-  // TODO: Add splash screen while storage is being fetched
+  if (signedIn === null) {
+    return <></>
+  }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {signedIn === false ? (
-          <>
-            <Stack.Screen
-              name="Onboarding"
-              component={Onboarding}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Register"
-              component={Register}
-              options={{ headerShown: false }}
-            />
-          </>
-        ) : (
-          <>
-            <Stack.Screen
-              name="IntoroTabs"
-              component={IntoroTabs}
-              options={{ headerShown: false }}
-            />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <LessonsProvider>
+          <AppNavigator
+            initialRouteName={signedIn === false ? "Onboarding" : "IntoroTabs"}
+          />
+        </LessonsProvider>
+      </NavigationContainer>
+    </SafeAreaProvider>
   )
 }

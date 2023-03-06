@@ -5,10 +5,14 @@ export class UserKana extends Kana {
     const { progress } = data
     super(data, type)
     this._unlocked = unlocked
-    this._progress = progress ? progress : null
+    this._progress = progress ? progress : 0
   }
 
   get unlocked() {
     return this._unlocked
+  }
+
+  get progress() {
+    return this._progress
   }
 }

@@ -7,7 +7,12 @@ export default function KanaLevel({ type, kana, level }) {
       <View style={style.levelContainer}>
         <Text>{`Level ${level}`}</Text>
       </View>
-      <KanaGrid kana={kana} type={type} />
+      <KanaGrid
+        kana={kana}
+        type={type}
+        showUnlocked={true}
+        showProgress={false}
+      />
     </View>
   )
 }

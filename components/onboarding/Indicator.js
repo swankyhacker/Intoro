@@ -1,4 +1,4 @@
-import { Animated, Dimensions, StyleSheet, View } from "react-native"
+import { Animated, Dimensions, StyleSheet, View, Text } from "react-native"
 const { width } = Dimensions.get("screen")
 
 const Indicator = ({ scrollX }) => {
