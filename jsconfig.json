@@ -6,7 +6,9 @@
       "@screens/*": ["./screens/*"],
       "@components/*": ["./components/*"],
       "@assets/*": ["./assets/*"],
-      "@types/*": ["./types/*"]
+      "@types/*": ["./types/*"],
+      "@navigators/*": ["navigators/*"],
+      "@context/*": ["context/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

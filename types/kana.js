@@ -24,4 +24,12 @@ export class Kana {
   get reading() {
     return this._reading
   }
+
+  get mnemonic() {
+    return this._mnemonic
+  }
+
+  get extraNote() {
+    return this._extraNote
+  }
 }

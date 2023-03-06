@@ -5,6 +5,8 @@ import { IntoroWrapper } from "@components/common"
 import { KanaGrid } from "@components/kanaChart"
 import LearningPadButton from "@components/learningPad/LearningPadButton"
 
+import { LessonsContext } from "@context/LessonsContext"
+
 import { getKanaByLevel, getLessons, getReviews } from "@api/firestore"
 import Kana from "@types/types"
 
@@ -31,19 +33,24 @@ export default function LearningPad() {
   return (
     <IntoroWrapper>
       <View style={styles.buttonWrapper}>
-        <LearningPadButton text={"Lesson"} fetchData={getLessons} />
-        <LearningPadButton text={"Review"} fetchData={getReviews} />
+        <LearningPadButton
+          text={"Lesson"}
+          fetchData={getLessons}
+          context={LessonsContext}
+          nextPage={"Lessons"}
+        />
+        {/* <LearningPadButton text={"Review"} fetchData={getReviews} /> */}
       </View>
       <View>
         <Text style={styles.title}>{Kana.HIRAGANA}</Text>
         {currentHiragana.current.length > 0 ? (
-          <KanaGrid kana={currentHiragana.current} />
+          <KanaGrid kana={currentHiragana.current} showProgress={true} />
         ) : (
           <></>
         )}
         <Text style={styles.title}>{Kana.KATAKANA}</Text>
         {currentKatakana.current.length > 0 ? (
-          <KanaGrid kana={currentKatakana.current} />
+          <KanaGrid kana={currentKatakana.current} showProgress={true} />
         ) : (
           <></>
         )}

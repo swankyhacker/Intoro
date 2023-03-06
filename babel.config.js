@@ -32,6 +32,8 @@ module.exports = function (api) {
             "@components": "./components",
             "@assets": "./assets",
             "@types": "./types",
+            "@navigators": "./navigators",
+            "@context": "./context",
           },
         },
       ],

@@ -3,11 +3,22 @@ import KanaItem from "./KanaItem"
 
 const { width } = Dimensions.get("screen")
 
-export default function KanaGrid({ kana }) {
+export default function KanaGrid({
+  kana,
+  showReading = true,
+  showProgress = false,
+  showUnlocked = false,
+}) {
   return (
     <View style={styles.gridContainer}>
       {kana.map((element, index) => (
-        <KanaItem element={element} key={index} />
+        <KanaItem
+          element={element}
+          key={index}
+          showProgress={showProgress}
+          showReading={showReading}
+          showUnlocked={showUnlocked}
+        />
       ))}
     </View>
   )

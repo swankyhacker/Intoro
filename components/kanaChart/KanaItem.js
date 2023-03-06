@@ -1,10 +1,27 @@
-import { Dimensions, StyleSheet, View, Text } from "react-native"
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+} from "react-native"
+import { ProgressBar } from "react-native-paper"
+
 import Colors from "@types/colors.js"
 import Types from "@types/types"
 
 const { width } = Dimensions.get("screen")
 
-export default function KanaItem({ element }) {
+export default function KanaItem({
+  element,
+  showReading = true,
+  showProgress = false,
+  showUnlocked = true,
+  boxStyle,
+  characterStyle,
+  onPressed,
+  disabled = true,
+}) {
   let boxShadow = generateBoxShadowStyle(
     -2,
     4,
@@ -15,23 +32,48 @@ export default function KanaItem({ element }) {
     Colors.SHADOW_COLOR_ANDROID
   )
   return (
-    <View
-      style={{
-        ...styles.item,
-        backgroundColor:
-          element.type === Types.HIRAGANA ? Colors.HIRAGANA : Colors.KATAKANA,
-        opacity: element.unlocked === true ? 1 : 0.4,
-        ...boxShadow,
-      }}
+    <TouchableOpacity
+      disabled={disabled}
+      onPress={onPressed}
+      style={styles.container}
     >
-      <Text style={styles.character}>{element.character}</Text>
-      <Text style={styles.reading}>{element.reading}</Text>
-    </View>
+      <View
+        style={{
+          ...styles.item,
+          backgroundColor:
+            element.type === Types.HIRAGANA
+              ? Colors.HIRAGANA_TILES
+              : Colors.KATAKANA_TILES,
+          opacity:
+            showUnlocked === false ? (element.unlocked === true ? 1 : 0.4) : 1,
+          ...boxShadow,
+          paddingVertical: showReading === true ? 14 : 0,
+          ...boxStyle,
+        }}
+      >
+        <Text style={{ ...styles.character, ...characterStyle }}>
+          {element.character}
+        </Text>
+        {showReading ? (
+          <Text style={styles.reading}>{element.reading}</Text>
+        ) : null}
+      </View>
+      {showProgress === true ? (
+        <ProgressBar
+          progress={element.progress / 5}
+          theme={{ colors: { primary: "green" } }}
+          style={styles.progressBar}
+        />
+      ) : null}
+    </TouchableOpacity>
   )
 }
 
 const chartContainerWidth = width - 40
 const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+  },
   item: {
     minWidth: 0.17 * chartContainerWidth,
     maxWidth: 0.17 * chartContainerWidth,
@@ -46,6 +88,11 @@ const styles = StyleSheet.create({
   character: {
     fontWeight: "900",
     fontSize: 28,
+  },
+  progressBar: {
+    backgroundColor: "#EEEEEE",
+    width: 50,
+    margin: 8,
   },
 })
 

@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef, useContext } from "react"
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 
-const LearningPadButton = ({ text, fetchData }) => {
+const LearningPadButton = ({ text, fetchData, nextPage, context }) => {
+  const { setSnapshot } = useContext(context)
+  const navigation = useNavigation()
   const [number, setNumber] = useState(null)
 
   const getData = async () => {
     try {
       const snapshot = await fetchData()
+      setSnapshot(snapshot)
       setNumber(snapshot.docs.length)
     } catch (err) {
       console.log(`Error while fetching ${text}:`, err)
@@ -17,8 +21,15 @@ const LearningPadButton = ({ text, fetchData }) => {
     getData()
   }, [])
 
+  const navigateToPage = () => {
+    if (number > 0) {
+      navigation.navigate(nextPage)
+    }
+  }
+
+  if (number === null) return <></>
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={navigateToPage}>
       <View style={styles.buttonContainer}>
         <Text style={styles.buttonText}>{text}</Text>
         <View style={styles.numberContainer}>
