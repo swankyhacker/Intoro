@@ -6,7 +6,7 @@ import KanaChart from "@screens/KanaChart"
 import Timetable from "@screens/Timetable"
 import LearningPad from "./LearningPad"
 
-const IntoroTabs = () => {
+const IntoroTabs = ({ navigation }) => {
   const Tab = createMaterialBottomTabNavigator()
 
   return (

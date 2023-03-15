@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 const IntoroButton = ({
   text,
   icon,
+  iconPosition = "right",
   fontStyle = undefined,
   buttonStyle = undefined,
   onPress,
@@ -20,8 +21,9 @@ const IntoroButton = ({
             alignItems: "center",
           }}
         >
+          {iconPosition == "left" ? <View>{icon}</View> : null}
           <Text style={[styles.iconButtonText, fontStyle]}>{text}</Text>
-          <View>{icon}</View>
+          {iconPosition == "right" ? <View>{icon}</View> : null}
         </View>
       </TouchableOpacity>
     )
