@@ -7,39 +7,42 @@ import OnboardingItem from "@components/onboarding/OnboardingItem"
 import { StatusBar } from "expo-status-bar"
 import { useRef } from "react"
 
+// import image for onboarding screen
+import onboarding1 from "@assets/onboarding/onboarding1.png"
+import onboarding2 from "@assets/onboarding/onboarding2.png"
+import onboarding3 from "@assets/onboarding/onboarding3.png"
+import onboarding4 from "@assets/onboarding/onboarding4.png"
+
 const { width } = Dimensions.get("screen")
 
 const DATA = [
   {
     key: "1",
-    title: "Hiragana & Katakana Made Easy",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ipsam.",
-    image: "https://cdn-icons-png.flaticon.com/512/2907/2907979.png",
+    title: "Hiragana & Katakana",
+    description: "On-the go!",
+    image: onboarding1,
   },
   {
     key: "2",
-    title: "Interactive Learning",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ipsam.",
-    image: "https://cdn-icons-png.flaticon.com/512/2907/2907979.png",
+    title: "Effective Learning",
+    description: "Spaced Repetitions and Mnemonics",
+    image: onboarding2,
   },
   {
     key: "3",
     title: "Plan Your Learning",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ipsam.",
-    image: "https://cdn-icons-png.flaticon.com/512/2907/2907979.png",
+    description: "With daily schedules",
+    image: onboarding3,
   },
   {
     key: "4",
     title: "Track Your Progress",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ipsam.",
-    image: "https://cdn-icons-png.flaticon.com/512/2907/2907979.png",
+    description: "With tracking feature",
+    image: onboarding4,
   },
 ]
 
+// TODO: Change to React-Native-Swiper
 const Onboarding = ({ navigation }) => {
   const scrollX = useRef(new Animated.Value(0)).current
   return (
