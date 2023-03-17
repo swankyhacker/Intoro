@@ -1,5 +1,5 @@
 import { writeBatch, doc, collection } from "firebase/firestore"
-import { db } from "./firebase.js"
+import { db } from "./firebase.mjs"
 
 import h1 from "./hiragana/level-1.json" assert { type: "json" }
 import h2 from "./hiragana/level-2.json" assert { type: "json" }
