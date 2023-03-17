@@ -10,7 +10,7 @@ const WeeklyIndicator = ({ dates, selectedDate, setSelectedDate }) => {
         const monthStart = format(week[0], "MMMM").toUpperCase()
         const monthEnd = format(week[6], "MMMM").toUpperCase()
         return (
-          <View>
+          <View key={index}>
             <View>
               <Text
                 style={{
@@ -27,9 +27,8 @@ const WeeklyIndicator = ({ dates, selectedDate, setSelectedDate }) => {
             </View>
             <View style={styles.weekContainer}>
               {week.map((day, index) => {
-                console.log(day)
                 return (
-                  <View>
+                  <View key={index}>
                     <TouchableOpacity
                       onPress={() => {
                         setSelectedDate(day)

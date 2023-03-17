@@ -42,6 +42,7 @@ const DATA = [
   },
 ]
 
+// TODO: Change to React-Native-Swiper
 const Onboarding = ({ navigation }) => {
   const scrollX = useRef(new Animated.Value(0)).current
   return (

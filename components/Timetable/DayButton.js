@@ -26,7 +26,7 @@ export default DayButton
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: "40",
+    borderRadius: 40,
     height: 90,
     width: 38,
     backgroundColor: "#F4D23C",

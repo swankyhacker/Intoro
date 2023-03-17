@@ -1,9 +1,10 @@
-import intoroLogo from "@assets/logo/IntoroLogo.png"
+import { useState } from "react"
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native"
+import { Portal, Provider } from "react-native-paper"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import FontAwesome from "react-native-vector-icons/FontAwesome"
-import { useState } from "react"
-import { Modal, Portal, Text, Button, Provider } from "react-native-paper"
+import intoroLogo from "@assets/logo/IntoroLogo.png"
+
 import ProfileModal from "./ProfileModal"
 
 export default function IntoroWrapper({ children, logo = true }) {
@@ -11,18 +12,16 @@ export default function IntoroWrapper({ children, logo = true }) {
   const [visible, setVisible] = useState(false)
 
   const showModal = () => setVisible(true)
-  const hideModal = () => setVisible(false)
 
   return (
     <Provider>
       <Portal>
-        <Modal
-          visible={visible}
-          onDismiss={hideModal}
-          contentContainerStyle={styles.modalContainer}
-        >
-          <ProfileModal name={"Candice Parkinson"} level={2} />
-        </Modal>
+        <ProfileModal
+          modal={visible}
+          setModal={setVisible}
+          name={"Candice Parkinson"}
+          level={2}
+        />
       </Portal>
       <View
         style={{
@@ -33,10 +32,7 @@ export default function IntoroWrapper({ children, logo = true }) {
       >
         {logo === true ? (
           <View style={styles.header}>
-            <Image
-              source={intoroLogo}
-              style={{ width: 100, height: 100, resizeMode: "contain" }}
-            />
+            <Image source={intoroLogo} style={styles.logo} />
             <View style={{ marginRight: 10 }}>
               <TouchableOpacity onPress={showModal}>
                 <FontAwesome name="user" color="#7B9EE3" size={26} />
@@ -62,12 +58,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  modalContainer: {
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 20,
-    marginHorizontal: 35,
-    height: 300,
+  logo: {
+    width: 100,
+    height: 100,
+    resizeMode: "contain",
   },
   bodyContainer: {
     flex: 6,
