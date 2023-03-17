@@ -1,6 +1,6 @@
-import { useEffect, useState, useRef, useContext } from "react"
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native"
 import { useNavigation } from "@react-navigation/native"
+import { useContext, useEffect, useState } from "react"
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 const LearningPadButton = ({ text, fetchData, nextPage, context }) => {
   const { setSnapshot } = useContext(context)
@@ -29,12 +29,10 @@ const LearningPadButton = ({ text, fetchData, nextPage, context }) => {
 
   if (number === null) return <></>
   return (
-    <TouchableOpacity onPress={navigateToPage}>
-      <View style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>{text}</Text>
-        <View style={styles.numberContainer}>
-          <Text>{number !== null ? number : -1}</Text>
-        </View>
+    <TouchableOpacity style={styles.buttonContainer} onPress={navigateToPage}>
+      <Text style={styles.buttonText}>{text}</Text>
+      <View style={styles.numberContainer}>
+        <Text>{number !== null ? number : -1}</Text>
       </View>
     </TouchableOpacity>
   )

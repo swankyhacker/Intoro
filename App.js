@@ -7,6 +7,8 @@ import { signInWithEmail } from "@api/auth"
 import { getData } from "@api/storage"
 
 import { LessonsProvider } from "@context/LessonsContext"
+import { ReviewsProvider } from "@context/ReviewsContext"
+
 import { AppNavigator } from "@navigators/index"
 
 LogBox.ignoreAllLogs() //Hide all warning notifications on front-end
@@ -16,17 +18,19 @@ export default function App() {
 
   const asyncLogin = async () => {
     const storedCredentials = await getData("credentials")
-    if (storedCredentials) {
-      try {
+    try {
+      if (storedCredentials) {
         await signInWithEmail(
           storedCredentials.email,
           storedCredentials.password
         )
         setSignedIn(true)
-      } catch (err) {
-        console.log("Invalid async storage credentials:", err)
+      } else {
         setSignedIn(false)
       }
+    } catch (err) {
+      console.log("Invalid async storage credentials:", err)
+      setSignedIn(false)
     }
   }
 
@@ -42,9 +46,13 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <LessonsProvider>
-          <AppNavigator
-            initialRouteName={signedIn === false ? "Onboarding" : "IntoroTabs"}
-          />
+          <ReviewsProvider>
+            <AppNavigator
+              initialRouteName={
+                signedIn === false ? "Onboarding" : "IntoroTabs"
+              }
+            />
+          </ReviewsProvider>
         </LessonsProvider>
       </NavigationContainer>
     </SafeAreaProvider>

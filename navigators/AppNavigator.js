@@ -1,6 +1,13 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-import { Login, Onboarding, Register, IntoroTabs, Lessons } from "@screens"
+import {
+  Login,
+  Onboarding,
+  Register,
+  IntoroTabs,
+  Lessons,
+  Reviews,
+} from "@screens"
 
 const Stack = createNativeStackNavigator()
 
@@ -30,6 +37,11 @@ export default function AppNavigator({ initialRouteName }) {
       <Stack.Screen
         name="Lessons"
         component={Lessons}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Reviews"
+        component={Reviews}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

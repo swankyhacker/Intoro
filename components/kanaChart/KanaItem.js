@@ -28,7 +28,7 @@ export default function KanaItem({
     Colors.SHADOW_COLOR_IOS,
     0.4,
     3,
-    4,
+    6,
     Colors.SHADOW_COLOR_ANDROID
   )
   return (
