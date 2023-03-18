@@ -19,3 +19,12 @@ export async function getData(key) {
     return null
   }
 }
+
+export async function clearData(key) {
+  try {
+    await AsyncStorage.removeItem(`@${key}`)
+  } catch (err) {
+    console.log("Error while removing data from async storage:", err)
+    return null
+  }
+}

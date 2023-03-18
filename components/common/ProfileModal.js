@@ -6,8 +6,22 @@ import Octicons from "react-native-vector-icons/Octicons"
 import IntoroButton from "@components/common/IntoroButton"
 import userImage from "@assets/icon/profileImage.png"
 
+import { signOutUser } from "@api/auth"
+import { clearData } from "@api/storage"
+
 const ProfileModal = ({ name, level, modal, setModal }) => {
   const navigation = useNavigation()
+
+  const onPress = async () => {
+    try {
+      await clearData("credentials")
+      await signOutUser()
+      setModal(false)
+      navigation.navigate("Login")
+    } catch (err) {
+      console.log("Unable to sign out")
+    }
+  }
   return (
     <Modal
       visible={modal}
@@ -15,37 +29,24 @@ const ProfileModal = ({ name, level, modal, setModal }) => {
       contentContainerStyle={styles.modalContainer}
     >
       <View style={styles.container}>
-        <View>
-          <Image source={userImage} />
+        <Image source={userImage} />
+        <View style={styles.user}>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.level}>{`Level ${level}`}</Text>
         </View>
-        <View
-          style={{
-            alignItems: "center",
-            marginBottom: 20,
+        <Text style={styles.bodyText}>
+          Keep up the good work,{"\n"}Catch you later!
+        </Text>
+        <IntoroButton
+          onPress={onPress}
+          iconPosition="left"
+          text={"Sign Out"}
+          icon={<Octicons name="sign-out" size={18} />}
+          fontStyle={{
+            fontSize: 14,
+            fontWeight: "300",
           }}
-        >
-          <Text style={{ fontSize: 14, fontWeight: "700" }}>{name}</Text>
-          <Text
-            style={{ fontSize: 10, fontWeight: "300", opacity: 0.5 }}
-          >{`Level ${level}`}</Text>
-        </View>
-        <View>
-          <Text style={styles.bodyText}>
-            Keep up the good work,{"\n"}Catch you later!
-          </Text>
-        </View>
-        <View style={{ width: "45%", marginTop: 20 }}>
-          <IntoroButton
-            onPress={() => navigation.navigate("Login")}
-            iconPosition="left"
-            text={"Sign Out"}
-            icon={<Octicons name="sign-out" size={18} />}
-            fontStyle={{
-              fontSize: 14,
-              fontWeight: "300",
-            }}
-          />
-        </View>
+        />
       </View>
     </Modal>
   )
@@ -54,9 +55,22 @@ const ProfileModal = ({ name, level, modal, setModal }) => {
 export default ProfileModal
 
 const styles = StyleSheet.create({
+  modalContainer: {
+    backgroundColor: "white",
+    borderRadius: 20,
+    marginHorizontal: 35,
+    paddingVertical: 20,
+    height: 300,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   container: {
     flex: 1,
+    width: "70%",
     justifyContent: "space-around",
+    alignItems: "center",
+  },
+  user: {
     alignItems: "center",
   },
   bodyText: {
@@ -64,11 +78,9 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     textAlign: "center",
   },
-  modalContainer: {
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 20,
-    marginHorizontal: 35,
-    height: 300,
+  name: {
+    fontSize: 14,
+    fontWeight: "700",
   },
+  level: { fontSize: 10, fontWeight: "300", opacity: 0.5 },
 })
