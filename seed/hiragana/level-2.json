@@ -1,6 +1,6 @@
 [
   {
-    "serial": 1,
+    "serial": 11,
     "level": 2,
     "character": "さ",
     "reading": "sa",
@@ -9,24 +9,24 @@
   },
 
   {
-    "serial": 2,
+    "serial": 12,
     "level": 2,
     "character": "し",
     "reading": "shi",
-    "mnemonic": "This kana looks like a giant shepherd's crook used to herd *KH**UN*shee*/UN*p*KH*. Baaaa… get in that corral, sheep!",
+    "mnemonic": "This kana looks like a giant shepherd's crook used to herd *KH**UN*shee*/UN*p*/KH*. Baaaa… get in that corral, sheep!",
     "extra_note": "*KH*し*/KH* is just the SH sound plus い, making a *KH*shi*/KH* sound. It's pronounced like *UN*shee*/UN* in \"*UN*shee*/UN*p.\""
   },
   {
-    "serial": 3,
+    "serial": 13,
     "level": 2,
     "character": "す",
     "reading": "su",
     "mnemonic": "See the *KH**UN*s*/UN*wing*/KH* doing a loop-dee-loop throwing that poor kid off of it? Imagine him screaming \"I'M GONNA SUE SOMEBODY FOR THIIIIIiiiissss\" as he flies off into the distance.",
-    "extra_note": "*KN*す*/KN* is just the S sound plus う, making a *KN*su*/KN* sound. It's pronounced like the word \"*UN*sue*/UN*,\" or *UN*su*/UN* in \"*UN*su*/UN*it.\" "
+    "extra_note": "*KH*す*/KH* is just the S sound plus う, making a *KH*su*/KH* sound. It's pronounced like the word \"*UN*sue*/UN*,\" or *UN*su*/UN* in \"*UN*su*/UN*it.\" "
   },
 
   {
-    "serial": 4,
+    "serial": 14,
     "level": 2,
     "character": "せ",
     "reading": "se",
@@ -34,7 +34,7 @@
     "extra_note": "*KH*せ*/KH* is just the S sound plus え, making a *KH*se*/KH* sound. It's pronounced like *UN*se*/UN* in \"*UN*se*/UN*ll.\" "
   },
   {
-    "serial": 5,
+    "serial": 15,
     "level": 2,
     "character": "そ",
     "reading": "so",
@@ -43,7 +43,7 @@
   },
 
   {
-    "serial": 6,
+    "serial": 16,
     "level": 2,
     "character": "た",
     "reading": "ta",
@@ -52,16 +52,16 @@
   },
 
   {
-    "serial": 7,
+    "serial": 17,
     "level": 2,
     "character": "ち",
     "reading": "chi",
-    "mnemonic": "You know when someone tells you to say \"cheese\" when taking a picture of you? This kana looks like that forced smile you have to make every time you're in a group photo.",
+    "mnemonic": "You know when someone tells you to say \"*KH**UN*chee*/UN*se*/KH*\" when taking a picture of you? This kana looks like that forced smile you have to make every time you're in a group photo.",
     "extra_note": "*KH*ち*/KH* is just the CH sound plus い, making a *KH*chi*/KH* sound. It's pronounced like *UN*chee*/UN* in \"*UN*chee*/UN*se.\"This is the second \"exception\" hiragana. Instead of a \"ti\" sound, it's a \"chi\" sound. Try not to forget this."
   },
 
   {
-    "serial": 8,
+    "serial": 18,
     "level": 2,
     "character": "つ",
     "reading": "tsu",
@@ -70,20 +70,20 @@
   },
 
   {
-    "serial": 9,
+    "serial": 19,
     "level": 2,
     "character": "て",
     "reading": "te",
-    "mnemonic": "Can you see a good ol' *KH**UN*te*/UN*lescope*/KH*? It's a hand-held one! In Japanese, \"hand\" is *KH*て (*UN*te*/UN*)*/KH*. That should help you remember that this kana looks like an old-school hand(te)-held telescope.",
-    "extra_note": "*KH*て*/KH* is just the T sound plus え, making a *KH*te*/KH* sound. It's pronounced like te in \"*UN*te*/UN*lescope.\""
+    "mnemonic": "Can you see a good ol' *KH**UN*te*/UN*lescope*/KH*? It's a hand-held one! In Japanese, \"hand\" is *KH* て (*UN*te*/UN*)*/KH*. That should help you remember that this kana looks like an old-school hand(te)-held telescope.",
+    "extra_note": "*KH*て*/KH* is just the T sound plus え, making a *KH*te*/KH* sound. It's pronounced like *UN*te*/UN* in \"*UN*te*/UN*lescope.\""
   },
 
   {
-    "serial": 10,
+    "serial": 20,
     "level": 2,
     "character": "と",
     "reading": "to",
-    "mnemonic": "This kana looks just like someone's *KH**UN*to*/UN*e*KH* with a little nail or splinter in it. Imagine how much this would hurt if it was your toe!",
-    "extra_note": "*KH* と*/KH* is just the T sound plus お, making a *KH*to*/KH* sound. It's pronounced like *UN*to*/UN* in \"*UN*to*/UN*e.\" In British English, it sounds like \"to\" in \"*UN*to*/UN*p.\" "
+    "mnemonic": "This kana looks just like someone's *KH**UN*to*/UN*e*/KH* with a little nail or splinter in it. Imagine how much this would hurt if it was your toe!",
+    "extra_note": "*KH*と*/KH* is just the T sound plus お, making a *KH*to*/KH* sound. It's pronounced like *UN*to*/UN* in \"*UN*to*/UN*e.\" In British English, it sounds like \"to\" in \"*UN*to*/UN*p.\" "
   }
 ]

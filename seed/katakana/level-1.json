@@ -4,8 +4,8 @@
     "level": 1,
     "character": "ア",
     "reading": "a",
-    "mnemonic": "*KK* ア */KK* has a deformed capital letter *KK*A*KK* in it. You have to turn your head to the side and connect some lines, but it's there.",
-    "extra_note": "*KH* あ */KH* is pronounced like *UN* \"ah!\" */UN* like when you come to a realization. It also sounds like the *UN* a *UN* in \"c*UN*a*/UN*r\"."
+    "mnemonic": "*KK* ア */KK* has a deformed capital letter *KK*A*/KK* in it. You have to turn your head to the side and connect some lines, but it's there.",
+    "extra_note": "*KK* あ */KK* is pronounced like *UN*\"ah!\"*/UN* like when you come to a realization. It also sounds like the *UN*a*/UN* in \"c*UN*a*/UN*r\"."
   },
 
   {
@@ -13,7 +13,8 @@
     "level": 1,
     "character": "イ",
     "reading": "i",
-    "mnemonic": "*KK* イ */KK*. looks like an *KK**UN*ea*/UN*gle*/KK*, standing on the ground, or on a branch, or wherever. You see its legs and its back, curved down like an eagle's?"
+    "mnemonic": "*KK* イ */KK*. looks like an *KK**UN*ea*/UN*gle*/KK*, standing on the ground, or on a branch, or wherever. You see its legs and its back, curved down like an eagle's?",
+    "extra_note": "*KK* い */KK* is pronounced like the *UN*ee*/UN* in \"*UN*ee*/UN*l\"."
   },
 
   {
@@ -21,14 +22,16 @@
     "level": 1,
     "character": "ウ",
     "reading": "u",
-    "mnemonic": "This katakana character looks a lot like its hiragana counterpart: *KK*う*/KK*. It should be similar enough to use as a mnemonic to remember what it is."
+    "mnemonic": "This katakana character looks a lot like its hiragana counterpart: *KK*う*/KK*. It should be similar enough to use as a mnemonic to remember what it is.",
+    "extra_note": "*KK* う */KK* is pronounced like  the *UN*oo*/UN* in \"*UN*oo*/UN*h… ahhh!\" when you're watching fireworks. In other words, it sounds like *UN*u*/UN* in \"*UN*U*/UN*NO,\" the card game, or the number one in Spanish."
   },
   {
     "serial": 4,
     "level": 1,
     "character": "エ",
     "reading": "e",
-    "mnemonic": "Imagine this is a girder an *KK**UN*e*/UN*ngineer*/KK* would use to build buildings. This character is in the shape of the end of a girder, and its made up of them too. Or, you can think of it like an *KK**UN*e*/UN*levator*KK*, with its doors closed"
+    "mnemonic": "Imagine this is a girder an *KK**UN*e*/UN*ngineer*/KK* would use to build buildings. This character is in the shape of the end of a girder, and its made up of them too. Or, you can think of it like an *KK**UN*e*/UN*levator*/KK*, with its doors closed",
+    "extra_note": "*KK* え */KK* is pronounced like the *UN*e*/UN* in \"*UN*e*/UN*gg\"."
   },
 
   {
@@ -36,7 +39,8 @@
     "level": 1,
     "character": "オ",
     "reading": "o",
-    "mnemonic": "This kana looks like an *KK*opera*/KK* singer. His mouth is shaped like an *KK*o*/KK* and he's singing \"*KK**UN*Oh*/UN*hhh*/KK* !\" "
+    "mnemonic": "This kana looks like an *KK*opera*/KK* singer. His mouth is shaped like an *KK*o*/KK* and he's singing \"*KK**UN*Oh*/UN*hhh*/KK* !\" ",
+    "extra_note": "*KK* お */KK* is pronounced like you're saying \"*UN*oh*/UN*.\" It also sounds like the *UN*o*/UN* in \"*UN*o*/UN*rigami\" ."
   },
 
   {
@@ -44,7 +48,8 @@
     "level": 1,
     "character": "カ",
     "reading": "ka",
-    "mnemonic": "It looks just like its hiragana counterpart: *KK*か*/KK*, though it's missing that little extra line. Close enough to make it easy to remember, though."
+    "mnemonic": "It looks just like its hiragana counterpart: *KK*か*/KK*, though it's missing that little extra line. Close enough to make it easy to remember, though.",
+    "extra_note": "*KK* か */KK*  is just the K sound plus あ, making a *KK* ka */KK*  sound. It's pronounced like *UN*ka*/UN* in \"*UN*ka*/UN*rma\"."
   },
 
   {
@@ -52,7 +57,8 @@
     "level": 1,
     "character": "キ",
     "reading": "ki",
-    "mnemonic": "It looks like the hiragana *KK*き*/KK* (the top part at least) and also looks like part of a weird *KK**UN*key*/UN**KK*."
+    "mnemonic": "It looks like the hiragana *KK*き*/KK* (the top part at least) and also looks like part of a weird *KK**UN*key*/UN**/KK*.",
+    "extra_note": "*KK* き */KK*  is just the K sound plus い, making a *KK* ki */KK* sound. In fact, it sounds just like the word \"*UN*key*/UN*\" which is the mnemonic we end up using."
   },
 
   {
@@ -60,20 +66,23 @@
     "level": 1,
     "character": "ク",
     "reading": "ku",
-    "mnemonic": "This looks like a long *KK*cook*/KK*'s hat."
+    "mnemonic": "This looks like a long *KK*cook*/KK*'s hat.",
+    "extra_note": "*KK* く */KK* is just the K sound plus う, making a *KK* ku */KK*  sound. It's pronounced \"coo,\" like both syllables of the word \"*UN*cu*/UN*ckoo\" (or just the first syllable, depending on your variety of English)."
   },
   {
     "serial": 9,
     "level": 1,
     "character": "ケ",
     "reading": "ke",
-    "mnemonic": "It looks like the letter *KK*K*/KK*!"
+    "mnemonic": "It looks like the letter *KK*K*/KK*!",
+    "extra_note": "*KK* け */KK* is just the K sound plus え, making a *KK* ke */KK* sound. It's pronounced like *UN*ke*/UN* in \"*UN*ke*/UN*lp.\""
   },
   {
     "serial": 10,
     "level": 1,
     "character": "コ",
     "reading": "ko",
-    "mnemonic": "See the two 90 degree *KK**UN*co*/UN*rners*/KK* ? The two corners are what help you to remember that this is \"ko.\" "
+    "mnemonic": "See the two 90 degree *KK**UN*co*/UN*rners*/KK* ? The two corners are what help you to remember that this is \"ko.\" ",
+    "extra_note": "*KK* こ */KK* is just the K sound plus お, making a *KK* ko */KK* sound. It's pronounced like *UN*co*/UN* in \"*UN*co*/UN*habitating.\" In British English, it is more like *UN*co*/UN* in \"*UN*co*/UN*in.\""
   }
 ]

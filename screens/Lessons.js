@@ -52,7 +52,6 @@ export default function Lessons() {
           onIndexChanged={(index) => {
             setSelectedIndex(index)
           }}
-          sel
           onMomentumScrollEnd={(e) => {
             // console.log("End", e.nativeEvent.contentOffset)
           }}
