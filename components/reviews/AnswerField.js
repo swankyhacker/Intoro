@@ -1,6 +1,5 @@
-import { useCallback, useRef } from "react"
+import { useState, useRef } from "react"
 import {
-  Animated,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -8,72 +7,102 @@ import {
   Keyboard,
 } from "react-native"
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons"
+import Animated, {
+  useAnimatedStyle,
+  interpolateColor,
+  withTiming,
+  useSharedValue,
+  withSequence,
+  withRepeat,
+} from "react-native-reanimated"
 
-// TODO: Add Text box correct/wrong animation
-export default function AnswerField({ answer }) {
-  const anim = useRef(new Animated.Value(0))
-  const backgroundColor = useRef(new Animated.Value(0))
+export default function AnswerField({ kana }) {
+  const [answerMode, setAnswerMode] = useState(true)
+  const anim = useSharedValue(0)
+  const progress = useSharedValue(0)
   const typedAnswer = useRef("")
+  const inputRef = useRef()
 
-  const shake = useCallback(() => {
-    // makes the sequence loop
-    Animated.loop(
-      // runs the animation array in sequence
-      Animated.sequence([
-        // shift element to the left by 2 units
-        Animated.timing(anim.current, {
-          toValue: -2,
-          duration: 50,
-          useNativeDriver: true,
-        }),
-        // shift element to the right by 2 units
-        Animated.timing(anim.current, {
-          toValue: 2,
-          duration: 50,
-          useNativeDriver: true,
-        }),
-        // bring the element back to its original position
-        Animated.timing(anim.current, {
-          toValue: 0,
-          duration: 50,
-          useNativeDriver: true,
-        }),
-      ]),
-      // loops the above animation config 2 times
-      { iterations: 2 }
-    ).start()
-  }, [])
+  const shake = () => {
+    anim.value = withRepeat(
+      withSequence(
+        withTiming(-2, { duration: 50 }),
+        withTiming(2, { duration: 50 }),
+        withTiming(0, { duration: 50 })
+      ),
+      2
+    )
+  }
+  const correct = () => {
+    progress.value = withTiming(1, { duration: 200 })
+  }
 
-  const correct = useCallback(() => {
-    Animated.timing(backgroundColor.current, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start()
-  }, [])
+  const wrong = () => {
+    progress.value = withTiming(-1, { duration: 200 })
+  }
+
+  const blank = () => {
+    progress.value = withTiming(0, { duration: 1 })
+  }
 
   const handleText = (text) => (typedAnswer.current = text)
 
   const handlePress = () => {
-    if (answer.current.trim().length < 1) {
-      shake()
-      correct()
+    if (answerMode === true) {
+      const formattedAnswer = typedAnswer.current.trim()
+      if (formattedAnswer.length < 1) {
+        // If no answer was typed in
+        shake()
+      } else {
+        Keyboard.dismiss()
+        if (formattedAnswer === kana.reading) {
+          // If answer is correct
+          correct()
+        } else {
+          // If answer is wrong
+          wrong()
+        }
+      }
     } else {
-      Keyboard.dismiss()
+      // Not in answer mode, go to next review
+      blank()
+      typedAnswer.current = ""
+      inputRef.current.clear()
     }
+    setAnswerMode(!answerMode)
   }
+
+  const shakeStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: anim.value }],
+    }
+  })
+
+  const animatedColorStyle = useAnimatedStyle(() => {
+    return {
+      backgroundColor: interpolateColor(
+        progress.value,
+        [-1, 0, 1],
+        ["#FF0000", "#FFFFFF", "#00FF00"]
+      ),
+      color: interpolateColor(
+        progress.value,
+        [-1, 0, 1],
+        ["#FFFFFF", "#000000", "#FFFFFF"]
+      ),
+    }
+  })
 
   return (
     <View style={styles.container}>
       <Animated.View
-        style={{
-          ...styles.animatedContainer,
-          transform: [{ translateX: anim.current }],
-          // backgroundColor: backgroundColor.current.interpolate({
-          //   inputRange: [0, 1],
-          //   outputRange: ["rgba(255,255,255,1)", "rgba(0,0,255,1)"],
-          // }),
-        }}
+        style={[
+          {
+            ...styles.animatedContainer,
+          },
+          shakeStyle,
+          animatedColorStyle,
+        ]}
       >
         <TextInput
           style={{
@@ -81,6 +110,9 @@ export default function AnswerField({ answer }) {
           }}
           placeholder="Answer"
           onChangeText={handleText}
+          editable={answerMode}
+          ref={inputRef}
+          multiline={true}
         />
       </Animated.View>
       <TouchableOpacity
@@ -108,10 +140,8 @@ const styles = StyleSheet.create({
     elevation: 10,
     borderRadius: 15,
     zIndex: 99,
-    backgroundColor: "white",
   },
   input: {
-    width: "100%",
     height: 50,
     padding: 11,
     fontSize: 20,
