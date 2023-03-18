@@ -10,7 +10,7 @@
     "web": "expo start --web",
     "prepare": "husky install",
     "emulators": "firebase emulators:start --import ./local --export-on-exit",
-    "seed": "APP_ENV=development node seed/index.mjs",
+    "seed": "rm -rf ./local && APP_ENV=development node seed/index.mjs",
     "seed:hiragana": "APP_ENV=development node seed/index.mjs hiragana",
     "seed:katakana": "APP_ENV=development node seed/index.mjs katakana"
   },
