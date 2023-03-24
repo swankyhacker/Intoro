@@ -7,35 +7,62 @@ import { IntoroWrapper } from "@components/common"
 import { ReviewsContext } from "@context/ReviewsContext"
 
 import { getKanaInfo } from "@api/firestore"
-export default function Reviews() {
+
+export default function Reviews({ navigation }) {
   const { snapshot } = useContext(ReviewsContext)
   const numberOfReviews = useRef()
-  const [reviews, setReviews] = useState([])
+  const allReviews = useRef([])
+  const [currentReview, setCurrentReview] = useState(null)
+  const currentReviewIndex = useRef()
 
   const getReviews = async () => {
     try {
       const currentReviews = await getKanaInfo(snapshot.docs)
       numberOfReviews.current = snapshot.docs.length
-      setReviews([...currentReviews])
+      allReviews.current = currentReviews
+      getCurrentReview()
     } catch (err) {
       console.log("Error while fetching reviews", err)
     }
+  }
+
+  const getCurrentReview = () => {
+    const randomIndex = Math.floor(Math.random() * numberOfReviews.current)
+    currentReviewIndex.current = randomIndex
+    setCurrentReview(allReviews.current[randomIndex])
+  }
+
+  const correctAnswer = () => {
+    numberOfReviews.current -= 1
+    if (numberOfReviews.current === 0) {
+      navigation.navigate("IntoroTabs")
+    } else {
+      allReviews.current.splice(currentReviewIndex.current, 1)
+      getCurrentReview()
+    }
+  }
+
+  const wrongAnswer = () => {
+    getCurrentReview()
   }
 
   useEffect(() => {
     getReviews()
   }, [])
 
-  if (reviews.length === 0) return <></>
+  if (currentReview === null) return <></>
 
-  // TODO: Pass kana dynamically as props instead of reviews[0]
   return (
     <IntoroWrapper logo={false}>
       <View style={styles.characterContainer}>
-        <Character kana={reviews[0]} />
+        <Character kana={currentReview} />
       </View>
       <View style={styles.answerContainer}>
-        <AnswerField kana={reviews[0]} />
+        <AnswerField
+          kana={currentReview}
+          correctAnswer={correctAnswer}
+          wrongAnswer={wrongAnswer}
+        />
       </View>
       <View style={styles.leafletContainer}></View>
     </IntoroWrapper>

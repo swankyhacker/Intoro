@@ -16,7 +16,7 @@ import Animated, {
   withRepeat,
 } from "react-native-reanimated"
 
-export default function AnswerField({ kana }) {
+export default function AnswerField({ kana, correctAnswer, wrongAnswer }) {
   const [answerMode, setAnswerMode] = useState(true)
   const anim = useSharedValue(0)
   const progress = useSharedValue(0)
@@ -48,14 +48,15 @@ export default function AnswerField({ kana }) {
   const handleText = (text) => (typedAnswer.current = text)
 
   const handlePress = () => {
+    const formattedAnswer = typedAnswer.current.trim().toLowerCase()
+    const isAnswerCorrect = formattedAnswer === kana.reading
     if (answerMode === true) {
-      const formattedAnswer = typedAnswer.current.trim()
       if (formattedAnswer.length < 1) {
         // If no answer was typed in
         shake()
       } else {
         Keyboard.dismiss()
-        if (formattedAnswer === kana.reading) {
+        if (isAnswerCorrect === true) {
           // If answer is correct
           correct()
         } else {
@@ -68,6 +69,11 @@ export default function AnswerField({ kana }) {
       blank()
       typedAnswer.current = ""
       inputRef.current.clear()
+      if (isAnswerCorrect === true) {
+        correctAnswer()
+      } else {
+        wrongAnswer()
+      }
     }
     setAnswerMode(!answerMode)
   }

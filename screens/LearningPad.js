@@ -11,7 +11,7 @@ import { ReviewsContext } from "@context/ReviewsContext"
 import { getKanaByLevel, getLessons, getReviews } from "@api/firestore"
 import Kana from "@types/types"
 
-export default function LearningPad() {
+export default function LearningPad({ navigation }) {
   const [currentKana, setCurrentKana] = useState({
     hiragana: [],
     katakana: [],
@@ -29,6 +29,9 @@ export default function LearningPad() {
     }
   }
 
+  const navigateToScreen = (screen) => {
+    navigation.navigate(screen)
+  }
   useEffect(() => {
     getKana()
   }, [])
@@ -41,13 +44,14 @@ export default function LearningPad() {
             text={"Lesson"}
             fetchData={getLessons}
             context={LessonsContext}
-            nextPage={"Lessons"}
+            onPress={() => navigateToScreen("Lessons")}
           />
           <LearningPadButton
             text={"Review"}
             fetchData={getReviews}
             context={ReviewsContext}
             nextPage={"Reviews"}
+            onPress={() => navigateToScreen("Reviews")}
           />
         </View>
         <Text style={styles.title}>{Kana.HIRAGANA}</Text>
