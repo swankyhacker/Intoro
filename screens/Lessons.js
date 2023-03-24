@@ -1,24 +1,29 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import { StyleSheet, View, Text } from "react-native"
+import { StyleSheet, Text, View } from "react-native"
 import Swiper from "react-native-swiper"
 
 import { LessonsContext } from "@context/LessonsContext"
+import { ReviewsContext } from "@context/ReviewsContext"
 
 import { IntoroWrapper } from "@components/common"
-import { Indicator, Leaflet } from "@components/lessons"
+import { Indicator, Leaflet, ReviewsModal } from "@components/lessons"
 
 import { getKanaInfo } from "@api/firestore"
 
-export default function Lessons() {
-  const { snapshot } = useContext(LessonsContext)
+export default function Lessons({ navigation }) {
+  const { snapshot: lessonSnapshot } = useContext(LessonsContext)
+  const { setSnapshot: setReviews } = useContext(ReviewsContext)
   const [lessons, setLessons] = useState([])
+  const currentLessons = useRef()
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const [isDialogVisible, setIsDialogVisible] = useState(false)
   const scrollRef = useRef()
 
   const getLessons = async () => {
     try {
-      const currentLessons = await getKanaInfo(snapshot.docs.slice(0, 5))
-      setLessons([...currentLessons])
+      currentLessons.current = lessonSnapshot.docs.slice(0, 5)
+      const lessonData = await getKanaInfo(currentLessons.current)
+      setLessons([...lessonData])
     } catch (err) {
       console.log("Error while fetching lessons", err)
     }
@@ -31,6 +36,25 @@ export default function Lessons() {
     }
   }
 
+  const scrollToPreviousLesson = () => {
+    scrollRef.current.scrollBy(-1)
+    setSelectedIndex(selectedIndex - 1)
+  }
+
+  const onIndexChanged = (index) => {
+    if (index === lessons.length) {
+      setIsDialogVisible(true)
+    }
+    setSelectedIndex(index)
+  }
+
+  const navigateToReviews = () => {
+    setReviews({
+      docs: currentLessons.current,
+    })
+    navigation.navigate("Reviews")
+  }
+
   useEffect(() => {
     getLessons()
   }, [])
@@ -38,40 +62,50 @@ export default function Lessons() {
   if (lessons.length === 0) return <></>
 
   return (
-    <IntoroWrapper logo={false}>
-      <View style={styles.icon}>
-        <Text style={styles.title}>Lessons</Text>
-        {/* <SimpleLineIcons size={40} name="arrow-left-circle" /> */}
-      </View>
+    <ReviewsModal
+      visible={isDialogVisible}
+      setVisible={setIsDialogVisible}
+      scrollToPreviousLesson={scrollToPreviousLesson}
+      navigateToReviews={navigateToReviews}
+    >
+      <IntoroWrapper logo={false}>
+        <View style={styles.icon}>
+          <Text style={styles.title}>Lessons</Text>
+          {/* <SimpleLineIcons size={40} name="arrow-left-circle" /> */}
+        </View>
 
-      <View style={{ ...styles.leafletContainer }}>
-        <Swiper
-          style={styles.wrapper}
-          loop={false}
-          showsPagination={true}
-          onIndexChanged={(index) => {
-            setSelectedIndex(index)
-          }}
-          onMomentumScrollEnd={(e) => {
-            // console.log("End", e.nativeEvent.contentOffset)
-          }}
-          dot={<></>}
-          activeDot={<></>}
-          ref={scrollRef}
-        >
-          {lessons.map((element, index) => {
+        <View style={{ ...styles.leafletContainer }}>
+          <Swiper
+            loop={false}
+            showsPagination={true}
+            onIndexChanged={onIndexChanged}
+            bounces={true}
+            dot={<></>}
+            activeDot={<></>}
+            ref={scrollRef}
+          >
+            {/* TODO: Add dynamic loop rendering */}
+            {/* {lessons.map((element, index) => {
             return <Leaflet kana={element} key={index} />
-          })}
-        </Swiper>
-      </View>
-      <View style={styles.indicator}>
-        <Indicator
-          lessons={lessons}
-          selectedIndex={selectedIndex}
-          scrollToLesson={scrollToLesson}
-        />
-      </View>
-    </IntoroWrapper>
+          })} */}
+            <Leaflet kana={lessons[0]} key={0} />
+            <Leaflet kana={lessons[1]} key={1} />
+            <Leaflet kana={lessons[2]} key={2} />
+            <Leaflet kana={lessons[3]} key={3} />
+            <Leaflet kana={lessons[4]} key={4} />
+            {/* TODO: Add Quiz Card */}
+            <View style={{ flex: 1 }}></View>
+          </Swiper>
+        </View>
+        <View style={styles.indicator}>
+          <Indicator
+            lessons={lessons}
+            selectedIndex={selectedIndex}
+            scrollToLesson={scrollToLesson}
+          />
+        </View>
+      </IntoroWrapper>
+    </ReviewsModal>
   )
 }
 

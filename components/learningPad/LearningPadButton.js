@@ -1,10 +1,9 @@
-import { useNavigation } from "@react-navigation/native"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState, useCallback } from "react"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { useFocusEffect } from "@react-navigation/native"
 
-const LearningPadButton = ({ text, fetchData, nextPage, context }) => {
+const LearningPadButton = ({ text, fetchData, onPress, context }) => {
   const { setSnapshot } = useContext(context)
-  const navigation = useNavigation()
   const [number, setNumber] = useState(null)
 
   const getData = async () => {
@@ -17,19 +16,15 @@ const LearningPadButton = ({ text, fetchData, nextPage, context }) => {
     }
   }
 
-  useEffect(() => {
-    getData()
-  }, [])
-
-  const navigateToPage = () => {
-    if (number > 0) {
-      navigation.navigate(nextPage)
-    }
-  }
+  useFocusEffect(
+    useCallback(() => {
+      getData()
+    }, [])
+  )
 
   if (number === null) return <></>
   return (
-    <TouchableOpacity style={styles.buttonContainer} onPress={navigateToPage}>
+    <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
       <Text style={styles.buttonText}>{text}</Text>
       <View style={styles.numberContainer}>
         <Text>{number !== null ? number : -1}</Text>
