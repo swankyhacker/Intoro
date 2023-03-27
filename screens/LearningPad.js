@@ -31,7 +31,7 @@ export default function LearningPad({ navigation }) {
   }
 
   const navigateToScreen = (screen) => {
-    navigation.navigate(screen)
+    navigation.navigate(screen, { prevScreen: "LearningPad" })
   }
 
   useFocusEffect(
