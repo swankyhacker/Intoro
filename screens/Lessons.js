@@ -1,4 +1,5 @@
-import { useContext, useEffect, useRef, useState } from "react"
+import { useFocusEffect } from "@react-navigation/native"
+import { useCallback, useContext, useRef, useState } from "react"
 import { StyleSheet, Text, View } from "react-native"
 import Swiper from "react-native-swiper"
 
@@ -52,12 +53,19 @@ export default function Lessons({ navigation }) {
     setReviews({
       docs: currentLessons.current,
     })
-    navigation.navigate("Reviews")
+    navigation.navigate("Reviews", { prevScreen: "Lessons" })
   }
 
-  useEffect(() => {
-    getLessons()
-  }, [])
+  useFocusEffect(
+    useCallback(() => {
+      setSelectedIndex(0)
+      getLessons()
+      return () => {
+        setSelectedIndex(0)
+        setIsDialogVisible(false)
+      }
+    }, [lessonSnapshot])
+  )
 
   if (lessons.length === 0) return <></>
 
@@ -83,6 +91,7 @@ export default function Lessons({ navigation }) {
             dot={<></>}
             activeDot={<></>}
             ref={scrollRef}
+            key={lessonSnapshot.docs.length}
           >
             {/* TODO: Add dynamic loop rendering */}
             {/* {lessons.map((element, index) => {

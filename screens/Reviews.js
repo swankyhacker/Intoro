@@ -5,11 +5,14 @@ import { AnswerField, Character } from "@components/reviews"
 import { IntoroWrapper } from "@components/common"
 
 import { ReviewsContext } from "@context/ReviewsContext"
+import { LessonsContext } from "@context/LessonsContext"
 
 import { getKanaInfo } from "@api/firestore"
 
-export default function Reviews({ navigation }) {
+export default function Reviews({ navigation, route }) {
   const { snapshot } = useContext(ReviewsContext)
+  const { snapshot: lessons, setSnapshot: setLessons } =
+    useContext(LessonsContext)
   const numberOfReviews = useRef()
   const allReviews = useRef([])
   const [currentReview, setCurrentReview] = useState(null)
@@ -36,7 +39,18 @@ export default function Reviews({ navigation }) {
     numberOfReviews.current -= 1
     allReviews.current.splice(currentReviewIndex.current, 1)
     if (numberOfReviews.current === 0) {
-      navigation.navigate("IntoroTabs")
+      if (route.params.prevScreen === "LearningPad") {
+        navigation.navigate("IntoroTabs")
+      } else {
+        const lessonSnapshot = [...lessons.docs]
+        lessonSnapshot.splice(0, 5)
+        setLessons({ docs: lessonSnapshot })
+        if (lessonSnapshot.length <= 0) {
+          navigation.navigate("IntoroTabs")
+        } else {
+          navigation.navigate("Lessons")
+        }
+      }
     } else {
       getCurrentReview()
     }

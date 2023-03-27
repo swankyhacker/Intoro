@@ -12,7 +12,8 @@
     "emulators": "firebase emulators:start --import ./local --export-on-exit",
     "seed": "rm -rf ./local && APP_ENV=development node seed/index.mjs",
     "seed:hiragana": "APP_ENV=development node seed/index.mjs hiragana",
-    "seed:katakana": "APP_ENV=development node seed/index.mjs katakana"
+    "seed:katakana": "APP_ENV=development node seed/index.mjs katakana",
+    "reset:reviews": "APP_ENV=development node seed/scripts/resetLevelReviews.mjs"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.11",
