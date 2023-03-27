@@ -19,14 +19,13 @@ export default async (snapshot) => {
 
   snapshot.forEach((doc) => {
     const data = doc.data()
-    const path = data.kana_id
-    const ref = path.path.split("/")[1]
+    const ref = data.kana_id.id
     if (data.type === KanaType.HIRAGANA) {
       hiraganaRefs.push(ref)
     } else {
       katakanaRefs.push(ref)
     }
-    userKanaInfo[ref] = data
+    userKanaInfo[ref] = { ...data, docId: doc.id }
   })
 
   const kana = []
@@ -38,7 +37,7 @@ export default async (snapshot) => {
       const data = doc.data()
       kana.push(
         new UserKana(
-          { ...userKanaInfo[doc.ref], ...data },
+          { ...userKanaInfo[doc.id], ...data },
           KanaType.HIRAGANA,
           true
         )
@@ -51,7 +50,7 @@ export default async (snapshot) => {
       const data = doc.data()
       kana.push(
         new UserKana(
-          { ...userKanaInfo[doc.ref], ...data },
+          { ...userKanaInfo[doc.id], ...data },
           KanaType.KATAKANA,
           true
         )

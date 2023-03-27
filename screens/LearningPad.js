@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useFocusEffect } from "@react-navigation/native"
+import { useCallback, useState } from "react"
 import { ScrollView, StyleSheet, Text, View } from "react-native"
 
 import { IntoroWrapper } from "@components/common"
@@ -32,9 +33,12 @@ export default function LearningPad({ navigation }) {
   const navigateToScreen = (screen) => {
     navigation.navigate(screen)
   }
-  useEffect(() => {
-    getKana()
-  }, [])
+
+  useFocusEffect(
+    useCallback(() => {
+      getKana()
+    }, [])
+  )
 
   return (
     <IntoroWrapper>

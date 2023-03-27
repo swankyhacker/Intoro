@@ -25,10 +25,9 @@ export default async (snapshot, type) => {
     const userKanaSnapshot = await getDocs(userKana)
     userKanaSnapshot.forEach((doc) => {
       const data = doc.data()
-      userKanaRefs[data.kana_id.id] = data
+      userKanaRefs[data.kana_id.id] = { ...data, docId: doc.id }
     })
   }
-
   snapshot.forEach((doc) => {
     if (userKanaRefs[doc.ref.id]) {
       kana.push(

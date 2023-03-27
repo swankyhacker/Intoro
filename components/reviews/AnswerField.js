@@ -1,20 +1,22 @@
-import { useState, useRef } from "react"
+import { useRef, useState } from "react"
 import {
+  Keyboard,
   StyleSheet,
   TextInput,
   TouchableOpacity,
   View,
-  Keyboard,
 } from "react-native"
-import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons"
 import Animated, {
-  useAnimatedStyle,
   interpolateColor,
-  withTiming,
+  useAnimatedStyle,
   useSharedValue,
-  withSequence,
   withRepeat,
+  withSequence,
+  withTiming,
 } from "react-native-reanimated"
+import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons"
+
+import { updateReview } from "@api/firestore"
 
 export default function AnswerField({ kana, correctAnswer, wrongAnswer }) {
   const [answerMode, setAnswerMode] = useState(true)
@@ -59,9 +61,16 @@ export default function AnswerField({ kana, correctAnswer, wrongAnswer }) {
         if (isAnswerCorrect === true) {
           // If answer is correct
           correct()
+          kana.confirmReview(true)
         } else {
           // If answer is wrong
           wrong()
+          kana.confirmReview(false)
+        }
+        try {
+          updateReview(kana)
+        } catch (err) {
+          console.log("Error while updating reviews", err)
         }
       }
     } else {
