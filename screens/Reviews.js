@@ -34,10 +34,10 @@ export default function Reviews({ navigation }) {
 
   const correctAnswer = () => {
     numberOfReviews.current -= 1
+    allReviews.current.splice(currentReviewIndex.current, 1)
     if (numberOfReviews.current === 0) {
       navigation.navigate("IntoroTabs")
     } else {
-      allReviews.current.splice(currentReviewIndex.current, 1)
       getCurrentReview()
     }
   }

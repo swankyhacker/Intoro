@@ -7,7 +7,6 @@ const IntoroButton = ({
   fontStyle = undefined,
   buttonStyle = undefined,
   onPress,
-  ...props
 }) => {
   if (icon !== undefined) {
     return (

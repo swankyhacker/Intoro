@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState, useCallback } from "react"
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { useFocusEffect } from "@react-navigation/native"
+import { useCallback, useContext, useState } from "react"
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 const LearningPadButton = ({ text, fetchData, onPress, context }) => {
   const { setSnapshot } = useContext(context)
@@ -24,7 +24,11 @@ const LearningPadButton = ({ text, fetchData, onPress, context }) => {
 
   if (number === null) return <></>
   return (
-    <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
+    <TouchableOpacity
+      style={styles.buttonContainer}
+      onPress={onPress}
+      disabled={number > 0 ? false : true}
+    >
       <Text style={styles.buttonText}>{text}</Text>
       <View style={styles.numberContainer}>
         <Text>{number !== null ? number : -1}</Text>
