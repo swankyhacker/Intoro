@@ -14,10 +14,6 @@ import intoroLogo from "@assets/logo/IntoroLogo.png"
 const { width } = Dimensions.get("screen")
 
 const Register = ({ navigation }) => {
-  const [displayName, setDisplayName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
   const [snackBar, setSnackBar] = useState(false)
   const errorMessage = useRef("")
 
