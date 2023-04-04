@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native"
+import { useForm, Controller } from "react-hook-form"
 
 import { AuthButton, AuthFooter, ErrorSnackbar } from "@components/auth"
 import { GoogleLoginButton, IntoroTextInput } from "@components/common"
@@ -12,14 +13,24 @@ import intoroLogo from "@assets/logo/IntoroLogo.png"
 const { width } = Dimensions.get("screen")
 
 const Login = ({ navigation }) => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
   const [snackBar, setSnackBar] = useState(false)
   const errorMessage = useRef("")
 
+  // react hook form
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  })
+
   const handleLogin = async (email, password) => {
     try {
-      const user = await signInWithEmail(email, password)
+      await signInWithEmail(email, password)
       await storeData("credentials", { email, password })
       navigation.navigate("IntoroTabs")
     } catch (error) {
@@ -51,24 +62,55 @@ const Login = ({ navigation }) => {
           Let's sign you in
         </Text>
       </View>
+
       {/* Email and Password Input Field */}
       <View style={styles.inputContainer}>
-        <IntoroTextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "invalid email address",
+            },
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <IntoroTextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Email"
+            />
+          )}
+          name="email"
         />
-        <IntoroTextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry
+        {errors.email?.type == "pattern" && <Text>Invalid Email</Text>}
+        {errors.email?.type == "required" && <Text>This is required.</Text>}
+
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <IntoroTextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              secureTextEntry
+              placeholder="Password"
+            />
+          )}
+          name="password"
         />
+
+        {errors.password && <Text>This is required.</Text>}
       </View>
+
       {/* Sign In Button */}
       <AuthButton
         label={"Sign in"}
-        onPress={() => handleLogin(email, password)}
+        onPress={handleSubmit((data) => handleLogin(data.email, data.password))}
       />
       <Text style={{ fontSize: 16, fontWeight: "bold", padding: 10 }}>or</Text>
       {/* Google Login Button */}

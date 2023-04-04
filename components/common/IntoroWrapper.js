@@ -13,15 +13,16 @@ export default function IntoroWrapper({ children, logo = true }) {
   const insets = useSafeAreaInsets()
   const [visible, setVisible] = useState(false)
   const [userLevel, setUserLevel] = useState(null)
-
-  const { uid: currentUser, displayName } = getCurrentUser()
+  const user = getCurrentUser()
+  const uid = user?.uid
+  const displayName = user?.displayName
 
   const showModal = () => setVisible(true)
 
   useEffect(() => {
-    if (currentUser) {
+    if (user) {
       const getLevel = async () => {
-        const level = await getCurrentLevel(currentUser)
+        const level = await getCurrentLevel(uid)
         setUserLevel(level)
       }
 

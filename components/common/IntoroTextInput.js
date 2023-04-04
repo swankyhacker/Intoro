@@ -24,5 +24,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderWidth: 1,
     borderColor: "rgba(142, 131, 131, 1)",
+    marginTop: 5,
   },
 })

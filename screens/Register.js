@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import { StyleSheet, Text, View, Dimensions, Image } from "react-native"
+import { useForm, Controller } from "react-hook-form"
 
 import { AuthButton, AuthFooter, ErrorSnackbar } from "@components/auth"
 import GoogleLoginButton from "@components/common/GoogleLoginButton"
@@ -20,22 +21,35 @@ const Register = ({ navigation }) => {
   const [snackBar, setSnackBar] = useState(false)
   const errorMessage = useRef("")
 
-  const handleRegister = async () => {
-    try {
-      await createUserWithEmail(email, password)
-      await updateUserProfile(displayName)
-      await storeData("credentials", { email, password })
-      navigation.navigate("IntoroTabs")
-    } catch (error) {
-      console.log("Error", error.message)
-      errorMessage.current = error.message
-      setSnackBar(true)
-    }
-  }
+  // react hook form
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  })
 
-  const checkPasswords = () => {
+  const handleRegister = async (
+    displayName,
+    email,
+    password,
+    confirmPassword
+  ) => {
     if (password === confirmPassword) {
-      handleRegister()
+      try {
+        await createUserWithEmail(email, password)
+        await updateUserProfile(displayName)
+        await storeData("credentials", { email, password })
+        navigation.navigate("IntoroTabs")
+      } catch (error) {
+        console.log("Error", error.message)
+        errorMessage.current = error.message
+        setSnackBar(true)
+      }
     } else {
       console.log("Passwords mismatch")
       errorMessage.current = "Passwords mismatch"
@@ -66,30 +80,94 @@ const Register = ({ navigation }) => {
         </Text>
       </View>
       <View style={styles.inputContainer}>
-        <IntoroTextInput
-          placeholder="Name"
-          value={displayName}
-          onChangeText={(text) => setDisplayName(text)}
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <IntoroTextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Display Name"
+            />
+          )}
+          name="displayName"
         />
-        <IntoroTextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
+        {errors.displayName && <Text>Display name required.</Text>}
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "invalid email address",
+            },
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <IntoroTextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Email"
+            />
+          )}
+          name="email"
         />
-        <IntoroTextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry
+        {errors.email?.type == "pattern" && <Text>Invalid Email</Text>}
+        {errors.email?.type == "required" && <Text>Email is required.</Text>}
+
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <IntoroTextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              secureTextEntry
+              placeholder="Password"
+            />
+          )}
+          name="password"
         />
-        <IntoroTextInput
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChangeText={(text) => setConfirmPassword(text)}
-          secureTextEntry
+
+        {errors.password && <Text>Password is required.</Text>}
+
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <IntoroTextInput
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              secureTextEntry
+              placeholder="Confirm Password"
+            />
+          )}
+          name="confirmPassword"
         />
+        {errors.confirmPassword && (
+          <Text>Password Confirmation is required.</Text>
+        )}
       </View>
-      <AuthButton label={"Register"} onPress={checkPasswords} />
+      <AuthButton
+        label={"Register"}
+        onPress={handleSubmit((data) =>
+          handleRegister(
+            data.displayName,
+            data.email,
+            data.password,
+            data.confirmPassword
+          )
+        )}
+      />
       <Text style={{ fontSize: 16, fontWeight: "bold", padding: 10 }}>or</Text>
       <GoogleLoginButton text={"Sign up with Google"} />
       <AuthFooter
