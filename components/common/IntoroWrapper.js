@@ -14,8 +14,8 @@ export default function IntoroWrapper({ children, logo = true }) {
   const [visible, setVisible] = useState(false)
   const [userLevel, setUserLevel] = useState(null)
   const user = getCurrentUser()
+  console.log(user)
   const uid = user?.uid
-  const displayName = user?.displayName
 
   const showModal = () => setVisible(true)
 
@@ -36,7 +36,7 @@ export default function IntoroWrapper({ children, logo = true }) {
         <ProfileModal
           modal={visible}
           setModal={setVisible}
-          name={displayName}
+          user={user}
           level={userLevel}
         />
       </Portal>
