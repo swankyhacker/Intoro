@@ -74,13 +74,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   bodyText: {
-    fontSize: 18,
-    fontWeight: "700",
+    fontSize: 15,
+    fontWeight: "500",
     textAlign: "center",
   },
   name: {
-    fontSize: 14,
+    fontSize: 19,
     fontWeight: "700",
   },
-  level: { fontSize: 10, fontWeight: "300", opacity: 0.5 },
+  level: { fontSize: 12, fontWeight: "300", opacity: 0.5 },
 })

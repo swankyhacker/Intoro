@@ -4,7 +4,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 import KanaChart from "@screens/KanaChart"
 import Timetable from "@screens/Timetable"
-import LearningPad from "./LearningPad"
+import LearningPad from "@screens/LearningPad"
 
 const IntoroTabs = ({ navigation }) => {
   const Tab = createMaterialBottomTabNavigator()
