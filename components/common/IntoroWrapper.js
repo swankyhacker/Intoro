@@ -2,7 +2,8 @@ import { useState } from "react"
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native"
 import { Portal, Provider } from "react-native-paper"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import FontAwesome from "react-native-vector-icons/FontAwesome"
+
+import userImage from "@assets/icon/profileImage.png"
 import intoroLogo from "@assets/logo/IntoroLogo.png"
 
 import ProfileModal from "./ProfileModal"
@@ -20,7 +21,7 @@ export default function IntoroWrapper({ children, logo = true }) {
           modal={visible}
           setModal={setVisible}
           name={"Candice Parkinson"}
-          level={2}
+          level={1}
         />
       </Portal>
       <View
@@ -32,10 +33,10 @@ export default function IntoroWrapper({ children, logo = true }) {
       >
         {logo === true ? (
           <View style={styles.header}>
-            <Image source={intoroLogo} style={styles.logo} />
+            <Image source={intoroLogo} style={styles.image} />
             <View style={{ marginRight: 10 }}>
               <TouchableOpacity onPress={showModal}>
-                <FontAwesome name="user" color="#7B9EE3" size={26} />
+                <Image style={styles.avatar} source={userImage} />
               </TouchableOpacity>
             </View>
           </View>
@@ -65,5 +66,9 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     flex: 6,
+  },
+  avatar: {
+    height: 50,
+    width: 50,
   },
 })

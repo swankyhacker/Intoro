@@ -1,53 +1,49 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import PagerView from "react-native-pager-view"
 import DayButton from "@components/Timetable/DayButton"
-import { format } from "date-fns"
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { addDays, eachDayOfInterval, format, getUnixTime } from "date-fns"
 
-const WeeklyIndicator = ({ dates, selectedDate, setSelectedDate }) => {
+const WeeklyIndicator = ({ selectedDate, setSelectedDate, timetable }) => {
+  const dates = eachDayOfInterval({
+    start: new Date(),
+    end: addDays(new Date(), 7),
+  })
+
+  const getTotalReviews = (day) => {
+    let total = 0
+    if (!timetable[day]) return 0
+    let allTimes = Object.keys(timetable[day])
+    if (allTimes.length < 1) return 0
+    allTimes.forEach((time) => {
+      total += timetable[day][time]
+    })
+    return total
+  }
+
   return (
-    <PagerView style={styles.container}>
-      {dates.map((week, index) => {
-        const monthStart = format(week[0], "MMMM").toUpperCase()
-        const monthEnd = format(week[6], "MMMM").toUpperCase()
-        return (
-          <View key={index}>
-            <View>
-              <Text
-                style={{
-                  fontSize: 26,
-                  fontWeight: "300",
-                  textAlign: "center",
-                  marginBottom: 10,
+    <View style={styles.container}>
+      <View>
+        <Text style={styles.month}>{format(new Date(), "LLLL")}</Text>
+      </View>
+      <View style={styles.weekContainer}>
+        {dates.map((day, index) => {
+          return (
+            <View key={index}>
+              <TouchableOpacity
+                onPress={() => {
+                  setSelectedDate(getUnixTime(day))
                 }}
               >
-                {monthStart === monthEnd
-                  ? monthStart
-                  : monthStart + " - " + monthEnd}
-              </Text>
+                <DayButton
+                  date={day}
+                  value={getTotalReviews(getUnixTime(day))}
+                  active={selectedDate === getUnixTime(day)}
+                />
+              </TouchableOpacity>
             </View>
-            <View style={styles.weekContainer}>
-              {week.map((day, index) => {
-                return (
-                  <View key={index}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setSelectedDate(day)
-                      }}
-                    >
-                      <DayButton
-                        date={day}
-                        value={Math.floor(Math.random() * 50)}
-                        active={selectedDate.getTime() === day.getTime()}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                )
-              })}
-            </View>
-          </View>
-        )
-      })}
-    </PagerView>
+          )
+        })}
+      </View>
+    </View>
   )
 }
 
@@ -61,5 +57,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-around",
+  },
+  month: {
+    fontSize: 26,
+    fontWeight: "300",
+    textAlign: "center",
+    marginBottom: 10,
   },
 })

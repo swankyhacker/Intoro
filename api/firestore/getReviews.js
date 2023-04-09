@@ -1,8 +1,8 @@
+import { getUnixTime } from "date-fns"
 import { collection, getDocs, query, where } from "firebase/firestore"
-import { add, getUnixTime, startOfHour } from "date-fns"
 
-import { db } from "../firebase.js"
 import { getCurrentUser } from "../auth.js"
+import { db } from "../firebase.js"
 
 // Returns all reviews for a user
 export default async () => {
