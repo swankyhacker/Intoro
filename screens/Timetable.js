@@ -8,15 +8,15 @@ import WeeklyIndicator from "@components/Timetable/WeeklyIndicator"
 import { IntoroWrapper } from "@components/common"
 
 const Timetable = () => {
+  const [timetable, setTimetable] = useState(null)
   const [selectedDate, setSelectedDate] = useState(null)
-  const timetableRef = useRef({})
 
   const fetchTimetable = async () => {
     try {
-      const dayStart = getUnixTime(startOfDay(new Date()))
+      const currentDay = getUnixTime(startOfDay(new Date()))
       const timetable = await getTimetable()
-      timetableRef.current = timetable
-      setSelectedDate(dayStart)
+      setTimetable({ ...timetable })
+      setSelectedDate(currentDay)
     } catch (err) {
       console.log("Error while fetching timetable", err)
     }
@@ -34,9 +34,9 @@ const Timetable = () => {
       <WeeklyIndicator
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
-        timetable={timetableRef.current}
+        timetable={timetable}
       />
-      <Timeline selectedDate={selectedDate} timetable={timetableRef.current} />
+      <Timeline selectedDate={selectedDate} timetable={timetable} />
     </IntoroWrapper>
   )
 }
