@@ -1,14 +1,21 @@
 import { useState } from "react"
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native"
+import { Image, StyleSheet, TouchableOpacity, View, Text } from "react-native"
 import { Portal, Provider } from "react-native-paper"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
+import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons"
 
 import userImage from "@assets/icon/profileImage.png"
 import intoroLogo from "@assets/logo/IntoroLogo.png"
 
 import ProfileModal from "./ProfileModal"
 
-export default function IntoroWrapper({ children, logo = true }) {
+export default function IntoroWrapper({
+  children,
+  logo = true,
+  backButton = false,
+  backNavigation,
+  title = "",
+}) {
   const insets = useSafeAreaInsets()
   const [visible, setVisible] = useState(false)
 
@@ -41,6 +48,18 @@ export default function IntoroWrapper({ children, logo = true }) {
             </View>
           </View>
         ) : null}
+        {title !== "" ? (
+          <View style={styles.icon}>
+            {backButton === true ? (
+              <SimpleLineIcons
+                size={40}
+                name="arrow-left-circle"
+                onPress={backNavigation}
+              />
+            ) : null}
+            <Text style={styles.title}>{title}</Text>
+          </View>
+        ) : null}
         <View style={styles.bodyContainer}>{children}</View>
       </View>
     </Provider>
@@ -65,10 +84,21 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   bodyContainer: {
-    flex: 6,
+    flex: 9,
   },
   avatar: {
     height: 50,
     width: 50,
+  },
+  icon: {
+    flex: 1,
+    justifyContent: "flex-start",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: "500",
+    marginHorizontal: 10,
   },
 })

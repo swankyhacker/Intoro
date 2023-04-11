@@ -1,4 +1,8 @@
+import { useContext } from "react"
 import { Dimensions, StyleSheet, View } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+
+import { ReferenceContext } from "@context/ReferenceContext"
 import KanaItem from "./KanaItem"
 
 const { width } = Dimensions.get("screen")
@@ -9,6 +13,14 @@ export default function KanaGrid({
   showProgress = false,
   showUnlocked = false,
 }) {
+  const navigation = useNavigation()
+  const { setReference } = useContext(ReferenceContext)
+
+  const onPressed = (kana) => {
+    setReference(kana)
+    navigation.navigate("Reference")
+  }
+
   return (
     <View style={styles.gridContainer}>
       {kana.map((element, index) => (
@@ -18,6 +30,8 @@ export default function KanaGrid({
           showProgress={showProgress}
           showReading={showReading}
           showUnlocked={showUnlocked}
+          disabled={false}
+          onPressed={() => onPressed(element)}
         />
       ))}
     </View>

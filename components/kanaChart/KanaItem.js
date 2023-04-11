@@ -33,6 +33,7 @@ export default function KanaItem({
   )
   return (
     <TouchableOpacity
+      activeOpacity={0.9}
       disabled={disabled}
       onPress={onPressed}
       style={styles.container}
