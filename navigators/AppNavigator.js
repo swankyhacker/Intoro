@@ -7,6 +7,7 @@ import {
   IntoroTabs,
   Lessons,
   Reviews,
+  Reference,
 } from "@screens"
 
 const Stack = createNativeStackNavigator()
@@ -42,6 +43,11 @@ export default function AppNavigator({ initialRouteName }) {
       <Stack.Screen
         name="Reviews"
         component={Reviews}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Reference"
+        component={Reference}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

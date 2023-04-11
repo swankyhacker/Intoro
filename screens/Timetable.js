@@ -1,53 +1,44 @@
-import { useState } from "react"
-import { StyleSheet, Text, View } from "react-native"
-import { IntoroWrapper } from "@components/common"
-import { addDays, eachDayOfInterval, eachWeekOfInterval } from "date-fns"
-import WeeklyIndicator from "@components/Timetable/WeeklyIndicator"
+import { useCallback, useRef, useState } from "react"
+import { useFocusEffect } from "@react-navigation/native"
+import { getUnixTime, startOfDay } from "date-fns"
+
+import { getTimetable } from "@api/firestore"
 import Timeline from "@components/Timetable/Timeline"
+import WeeklyIndicator from "@components/Timetable/WeeklyIndicator"
+import { IntoroWrapper } from "@components/common"
 
 const Timetable = () => {
-  const dates = eachWeekOfInterval(
-    {
-      start: new Date(),
-      end: addDays(new Date(), 28),
-    },
-    {
-      weekStartsOn: 1,
+  const [selectedDate, setSelectedDate] = useState(null)
+  const timetableRef = useRef({})
+
+  const fetchTimetable = async () => {
+    try {
+      const dayStart = getUnixTime(startOfDay(new Date()))
+      const timetable = await getTimetable()
+      timetableRef.current = timetable
+      setSelectedDate(dayStart)
+    } catch (err) {
+      console.log("Error while fetching timetable", err)
     }
-  ).reduce((acc, date) => {
-    const allDays = eachDayOfInterval({
-      start: date,
-      end: addDays(date, 6),
-    })
-    acc.push(allDays)
-    return acc
-  }, [])
+  }
 
-  const [selectedDate, setSelectedDate] = useState(dates[0][0])
+  useFocusEffect(
+    useCallback(() => {
+      fetchTimetable()
+    }, [])
+  )
 
-  // TODO: replace with real data, refetch on date change
-  const timeline = [
-    { time: "9am", value: "8" },
-    { time: "10am", value: "5" },
-    { time: "1pm", value: "3" },
-    { time: "4pm", value: "8" },
-    { time: "6pm", value: "8" },
-    { time: "8pm", value: "3" },
-    { time: "10pm", value: "6" },
-  ]
-
+  if (selectedDate === null) return <></>
   return (
     <IntoroWrapper>
       <WeeklyIndicator
-        dates={dates}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
+        timetable={timetableRef.current}
       />
-      <Timeline timeline={timeline} />
+      <Timeline selectedDate={selectedDate} timetable={timetableRef.current} />
     </IntoroWrapper>
   )
 }
 
 export default Timetable
-
-const styles = StyleSheet.create({})

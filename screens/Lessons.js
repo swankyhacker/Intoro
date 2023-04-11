@@ -76,12 +76,12 @@ export default function Lessons({ navigation }) {
       scrollToPreviousLesson={scrollToPreviousLesson}
       navigateToReviews={navigateToReviews}
     >
-      <IntoroWrapper logo={false}>
-        <View style={styles.icon}>
-          <Text style={styles.title}>Lessons</Text>
-          {/* <SimpleLineIcons size={40} name="arrow-left-circle" /> */}
-        </View>
-
+      <IntoroWrapper
+        logo={false}
+        title={"Lessons"}
+        backButton={true}
+        backNavigation={() => navigation.navigate("IntoroTabs")}
+      >
         <View style={{ ...styles.leafletContainer }}>
           <Swiper
             loop={false}
@@ -119,14 +119,6 @@ export default function Lessons({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  icon: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "500",
-  },
   leafletContainer: {
     flex: 6,
     borderRadius: 15,

@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from "firebase/firestore"
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore"
 
 import { getCurrentUser } from "../auth.js"
 import { db } from "../firebase.js"
@@ -9,7 +9,8 @@ export default async () => {
   const q1 = query(
     collection(db, `users/${currentUser}/kana`),
     where("review_time", "==", null),
-    where("progress", "==", 0)
+    where("progress", "==", 0),
+    orderBy("type")
   )
   const lessonSnapshot = await getDocs(q1)
   return lessonSnapshot

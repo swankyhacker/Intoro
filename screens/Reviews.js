@@ -67,7 +67,12 @@ export default function Reviews({ navigation, route }) {
   if (currentReview === null) return <></>
 
   return (
-    <IntoroWrapper logo={false}>
+    <IntoroWrapper
+      logo={false}
+      title="Reviews"
+      backButton={true}
+      backNavigation={() => navigation.pop()}
+    >
       <View style={styles.characterContainer}>
         <Character kana={currentReview} />
       </View>

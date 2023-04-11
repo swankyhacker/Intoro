@@ -8,6 +8,7 @@ import { getData } from "@api/storage"
 
 import { LessonsProvider } from "@context/LessonsContext"
 import { ReviewsProvider } from "@context/ReviewsContext"
+import { ReferenceProvider } from "@context/ReferenceContext"
 
 import { AppNavigator } from "@navigators/index"
 
@@ -47,11 +48,13 @@ export default function App() {
       <NavigationContainer>
         <LessonsProvider>
           <ReviewsProvider>
-            <AppNavigator
-              initialRouteName={
-                signedIn === false ? "Onboarding" : "IntoroTabs"
-              }
-            />
+            <ReferenceProvider>
+              <AppNavigator
+                initialRouteName={
+                  signedIn === false ? "Onboarding" : "IntoroTabs"
+                }
+              />
+            </ReferenceProvider>
           </ReviewsProvider>
         </LessonsProvider>
       </NavigationContainer>

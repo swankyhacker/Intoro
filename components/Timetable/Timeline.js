@@ -1,25 +1,32 @@
 import { FlatList, StyleSheet, Text, View } from "react-native"
-import React from "react"
+import { format, fromUnixTime } from "date-fns"
 
-const Timeline = ({ timeline }) => {
-  if (!timeline) {
+const Timeline = ({ timetable, selectedDate }) => {
+  const makeTimeline = (day, timetable) => {
+    const timeline = []
+    if (!timetable[day]) return timeline
+    Object.keys(timetable[day]).forEach((hour) => {
+      timeline.push({
+        time: format(fromUnixTime(hour), "h aaa"),
+        value: timetable[day][hour],
+      })
+    })
+    return timeline
+  }
+
+  const timeline = makeTimeline(selectedDate, timetable)
+
+  if (timeline.length < 1) {
     return (
       <View style={styles.container}>
-        <Text
-          style={{
-            fontSize: 30,
-            fontWeight: "400",
-            color: "#1E1D1D",
-            textAlign: "center",
-            opacity: 0.5,
-          }}
-        >
+        <Text style={styles.message}>
           TODAY IS YOUR{"\n"}
           DAY OFF!
         </Text>
       </View>
     )
   }
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -86,5 +93,12 @@ const styles = StyleSheet.create({
   valueText: {
     fontSize: 16,
     fontWeight: "500",
+  },
+  message: {
+    fontSize: 30,
+    fontWeight: "400",
+    color: "#1E1D1D",
+    textAlign: "center",
+    opacity: 0.5,
   },
 })

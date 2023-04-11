@@ -155,6 +155,13 @@ const styles = StyleSheet.create({
     elevation: 10,
     borderRadius: 15,
     zIndex: 99,
+    shadowColor: "#171717",
+    shadowOffset: {
+      width: -2,
+      height: 4,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   input: {
     height: 50,
