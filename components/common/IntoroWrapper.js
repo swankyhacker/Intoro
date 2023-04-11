@@ -1,17 +1,34 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native"
 import { Portal, Provider } from "react-native-paper"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import FontAwesome from "react-native-vector-icons/FontAwesome"
 import intoroLogo from "@assets/logo/IntoroLogo.png"
+import { getCurrentUser } from "@api/auth"
 
 import ProfileModal from "./ProfileModal"
+import getCurrentLevel from "@api/firestore/getCurrentLevel"
 
 export default function IntoroWrapper({ children, logo = true }) {
   const insets = useSafeAreaInsets()
   const [visible, setVisible] = useState(false)
+  const [userLevel, setUserLevel] = useState(null)
+  const user = getCurrentUser()
+  console.log(user)
+  const uid = user?.uid
 
   const showModal = () => setVisible(true)
+
+  useEffect(() => {
+    if (user) {
+      const getLevel = async () => {
+        const level = await getCurrentLevel(uid)
+        setUserLevel(level)
+      }
+
+      getLevel()
+    }
+  }, [])
 
   return (
     <Provider>
@@ -19,8 +36,8 @@ export default function IntoroWrapper({ children, logo = true }) {
         <ProfileModal
           modal={visible}
           setModal={setVisible}
-          name={"Candice Parkinson"}
-          level={2}
+          user={user}
+          level={userLevel}
         />
       </Portal>
       <View

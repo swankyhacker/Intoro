@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth"
 import { auth } from "./firebase"
 
@@ -11,6 +12,10 @@ export const createUserWithEmail = (email, password) => {
 
 export const signInWithEmail = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
+}
+
+export const updateUserProfile = (displayName) => {
+  return updateProfile(getCurrentUser(), { displayName })
 }
 
 export const getCurrentUser = () => {

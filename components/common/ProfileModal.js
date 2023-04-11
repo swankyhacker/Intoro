@@ -9,7 +9,7 @@ import userImage from "@assets/icon/profileImage.png"
 import { signOutUser } from "@api/auth"
 import { clearData } from "@api/storage"
 
-const ProfileModal = ({ name, level, modal, setModal }) => {
+const ProfileModal = ({ user, level, modal, setModal }) => {
   const navigation = useNavigation()
 
   const onPress = async () => {
@@ -30,8 +30,9 @@ const ProfileModal = ({ name, level, modal, setModal }) => {
     >
       <View style={styles.container}>
         <Image source={userImage} />
-        <View style={styles.user}>
-          <Text style={styles.name}>{name}</Text>
+        <View style={styles.userDetail}>
+          <Text style={styles.name}>{user?.displayName}</Text>
+          <Text style={styles.email}>{user?.email}</Text>
           <Text style={styles.level}>{`Level ${level}`}</Text>
         </View>
         <Text style={styles.bodyText}>
@@ -46,6 +47,7 @@ const ProfileModal = ({ name, level, modal, setModal }) => {
             fontSize: 14,
             fontWeight: "300",
           }}
+          buttonStyle={{ width: "40%" }}
         />
       </View>
     </Modal>
@@ -60,27 +62,33 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginHorizontal: 35,
     paddingVertical: 20,
-    height: 300,
+    height: 320,
     justifyContent: "center",
     alignItems: "center",
   },
   container: {
     flex: 1,
-    width: "70%",
     justifyContent: "space-around",
     alignItems: "center",
   },
-  user: {
+  userDetail: {
     alignItems: "center",
   },
   bodyText: {
-    fontSize: 18,
-    fontWeight: "700",
+    fontSize: 16,
+    fontWeight: "400",
     textAlign: "center",
   },
   name: {
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: "700",
+    marginBottom: 4,
   },
-  level: { fontSize: 10, fontWeight: "300", opacity: 0.5 },
+  email: {
+    fontSize: 14,
+    fontWeight: "300",
+    opacity: 0.5,
+    marginBottom: 4,
+  },
+  level: { fontSize: 13, fontWeight: "300", opacity: 0.5 },
 })

@@ -36,7 +36,7 @@ const WeeklyIndicator = ({ dates, selectedDate, setSelectedDate }) => {
                     >
                       <DayButton
                         date={day}
-                        value={Math.floor(Math.random() * 50)}
+                        value={Math.floor(Math.random() * 10)}
                         active={selectedDate.getTime() === day.getTime()}
                       />
                     </TouchableOpacity>
