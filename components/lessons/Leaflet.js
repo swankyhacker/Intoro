@@ -32,7 +32,7 @@ export default function Leaflet({ kana }) {
           <Text style={styles.reading}>{kana.reading}</Text>
         </View>
         <Section
-          title="Pronounciation"
+          title="Pronunciation"
           subtitle={kana.extraNote}
           style={{ flex: 1 }}
         />

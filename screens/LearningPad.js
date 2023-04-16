@@ -21,10 +21,15 @@ export default function LearningPad({ navigation }) {
   const getKana = async () => {
     try {
       const { lvlHiragana, lvlKatakana } = await getKanaByLevel()
-      setCurrentKana({
-        hiragana: lvlHiragana,
-        katakana: lvlKatakana,
-      })
+      // TODO: Remove setTimeout after demo
+      if (lvlHiragana.length > 0) {
+        setCurrentKana({
+          hiragana: lvlHiragana,
+          katakana: lvlKatakana,
+        })
+      } else {
+        setTimeout(getKana, 2000)
+      }
     } catch (err) {
       console.log("Error while fetching level kana:", err)
     }

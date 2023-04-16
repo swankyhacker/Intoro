@@ -1,10 +1,9 @@
-import { useCallback, useRef, useState } from "react"
 import { useFocusEffect } from "@react-navigation/native"
 import { getUnixTime, startOfDay } from "date-fns"
+import { useCallback, useState } from "react"
 
 import { getTimetable } from "@api/firestore"
-import Timeline from "@components/Timetable/Timeline"
-import WeeklyIndicator from "@components/Timetable/WeeklyIndicator"
+import { Timeline, WeeklyIndicator } from "@components/Timetable"
 import { IntoroWrapper } from "@components/common"
 
 const Timetable = () => {
