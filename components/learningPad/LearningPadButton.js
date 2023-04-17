@@ -1,5 +1,5 @@
 import { useFocusEffect } from "@react-navigation/native"
-import { useCallback, useContext, useState } from "react"
+import { useCallback, useContext, useState, useEffect } from "react"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 const LearningPadButton = ({ text, fetchData, onPress, context }) => {
@@ -16,11 +16,9 @@ const LearningPadButton = ({ text, fetchData, onPress, context }) => {
     }
   }
 
-  useFocusEffect(
-    useCallback(() => {
-      getData()
-    }, [])
-  )
+  useEffect(() => {
+    getData()
+  }, [])
 
   if (number === null) return <></>
   return (
