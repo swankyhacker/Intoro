@@ -48,38 +48,44 @@ export default function LearningPad({ navigation }) {
   return (
     <IntoroWrapper>
       <ScrollView>
-        <View style={styles.buttonWrapper}>
-          <LearningPadButton
-            text={"Lesson"}
-            fetchData={getLessons}
-            context={LessonsContext}
-            onPress={() => navigateToScreen("Lessons")}
-          />
-          <LearningPadButton
-            text={"Review"}
-            fetchData={getReviews}
-            context={ReviewsContext}
-            nextPage={"Reviews"}
-            onPress={() => navigateToScreen("Reviews")}
-          />
-        </View>
-        <Text style={styles.title}>{Kana.HIRAGANA}</Text>
         {currentKana.hiragana.length > 0 ? (
-          <KanaGrid
-            kana={currentKana.hiragana}
-            showProgress={true}
-            showReading={false}
-          />
-        ) : (
-          <></>
-        )}
-        <Text style={styles.title}>{Kana.KATAKANA}</Text>
-        {currentKana.katakana.length > 0 ? (
-          <KanaGrid
-            kana={currentKana.katakana}
-            showProgress={true}
-            showReading={false}
-          />
+          <>
+            <View style={styles.buttonWrapper}>
+              <LearningPadButton
+                text={"Lesson"}
+                fetchData={getLessons}
+                context={LessonsContext}
+                onPress={() => navigateToScreen("Lessons")}
+              />
+              <LearningPadButton
+                text={"Review"}
+                fetchData={getReviews}
+                context={ReviewsContext}
+                nextPage={"Reviews"}
+                onPress={() => navigateToScreen("Reviews")}
+              />
+            </View>
+            <Text style={styles.title}>{Kana.HIRAGANA}</Text>
+            {currentKana.hiragana.length > 0 ? (
+              <KanaGrid
+                kana={currentKana.hiragana}
+                showProgress={true}
+                showReading={false}
+              />
+            ) : (
+              <></>
+            )}
+            <Text style={styles.title}>{Kana.KATAKANA}</Text>
+            {currentKana.katakana.length > 0 ? (
+              <KanaGrid
+                kana={currentKana.katakana}
+                showProgress={true}
+                showReading={false}
+              />
+            ) : (
+              <></>
+            )}
+          </>
         ) : (
           <></>
         )}
