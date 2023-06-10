@@ -1,26 +1,46 @@
 # Intoro 🇯🇵 
 
-Smartest Kana app. 8-)
+ Intoro is an app with researched and effective pedagogy that will help consumers to learn Japanese Kana characters in an entertaining and stress-free manner. 
+ 
+ The purpose of the app is to lay a strong foundation regarding the elementary principles of the Japanese writing system for beginners. The scope of the app is limited to the first two scripts of the language, namely **Hiragana** and **Katakana**. 
+ 
+ It is incorporated with features such as a **spaced repetition system**, **pre-written flashcards**, **timetable** etc to aid the tuition of the users. After using the app consistently for personal study, the user should be familiar with both of the aforementioned scripts and be able to parse through basic Japanese literature.
+
+## Features
+<img src="./assets/readme/features_1.png"/>
+<br/>
+<img src="./assets/readme/features_2.png"/>
+
 
 ## Getting Started
 ---
-**NOTE**: We will use the `yarn` packet manager for managing our dependencies. Please do **NOT** use `npm`.
-
-1. Install all necessary dependencies.
+**NOTE**: It is recommended to use the  `yarn` packet manager for managing dependencies.
+1. Install all necessary dependencies:
 
 ```
 $ yarn 
 ```
 We will use the `yarn` packet manager for managing our dependencies. Please do **NOT** use `npm`.
 
-2. You will need to have a ```firebase``` account for interacting with the project. Contact __[@swankyhacker](https://github.com/swankyhacker)__ for access to Intoro's firebase credentials. Sign into your firebase account with:
+2. Install all of the necessary dependencies for Firebase functions:
+```
+$ cd functions && yarn
+```
+
+3. You will need to have a ```firebase``` account for interacting with the project. Sign into your firebase account with:
 ```
 $ firebase login
 ```
 
-3. It is recommended to install the recommended ```vscode``` extensions for this project. 
+4. Connect the project to your firebase account by specifying your project's API key in a `.env` file in the root directory: 
+```
+FIREBASE_API_KEY=[YOUR FIREBASE PORJECT API KEY]
+DEV_OS=[YOUR EMULATOR OS: ANDROID/APPLE]
+```
 
-4. For local development, use the following command to start an Expo server:
+5. It is recommended to install the recommended ```vscode``` extensions for this project. 
+
+6. For local development, use the following command to start an Expo server:
 ```
 $ yarn start
 ```
@@ -29,26 +49,27 @@ $ yarn start
 $ yarn emulators 
 ```
 
-5. Use the following command to seed your Firestore emulator:
+7. Use the following command to seed your Firestore emulator:
 ```
 $ yarn seed
 ```
+8. For connecting to your real Firestore database, use the following command:
+```
+$ yarn start:staging
+```
 
+**Note**: Due to the complex nature of the installation process, a docker image of the project will be released soon !!!
 
-## Dependencies
----
-This project has already been configured with the following dependencies:
-- ```react-native-paper```: Pre-configured customizable React Native UI components.
-- ```react-navigation```: For navigating between different screens and storing the browsed pages in a stack.
-- ```firebase-tools```: Accessing Firebase tools from the CLI.
-- ```husky```: Pre-commit Git hooks for consistent linting and formatting.
-- ```metro-react-native-babel-preset```: Set up path resolvers in project
+## Contributors
+- [Akshit Kumar](https://www.linkedin.com/in/akshit-kumar-jain-4444371b5/): Project Lead and Full Stack Engineer
+- [John Nicholas Suharjono](https://www.linkedin.com/in/john-nicholas-suharjono/?originalSubdomain=sg): Front-end Engineer
+- [Sumair Hasan](https://www.linkedin.com/in/sumair-hasan/?locale=zh_CN): UI/UX Designer
+- [Iman Zulhakeem](): UI/UX Designer
+- [Syamil Sabirin](https://www.linkedin.com/in/syamil-sabirin-875776233/?originalSubdomain=sg): UI/UX Designer
+- [Chua Wen Huat](https://www.linkedin.com/in/chua-wen-huat-757583154/?originalSubdomain=sg): Data Engineer
+- [Samyuktha Gurusamy](https://www.linkedin.com/in/samyuktha-gurusamy/): Data Engineer
 
-## Commit Rules 
----
-1. Do not commit to the ```main/master``` branch. Create a separate branch for each feature and push to origin with your branch name. Submit your code for review through a ```pull request```.
-2. Use sensible names for your branches. Prefix with ```fix``` or ```feature``` depending on the situation. For example, if you are working on the design for the login page, you can use `feature/login-page`.
-3. Make sure your commit messages are able to give an idea of what work or feature you have finished in that particular commit.
-4. Do not try to bypass the pre-commit hooks.
-5. If you are installing new libraries, please contact me before installing it as I may be able to suggest a better alternative.
-6. Try to write modular code as keep your commits as brief as possible. 
+## Credits
+All learning material in this app is was taken from and is owned by [Tofugu](https://www.tofugu.com/).
+<br/>
+The app is also heavily inspired by the design of [WaniKani](https://www.wanikani.com).
